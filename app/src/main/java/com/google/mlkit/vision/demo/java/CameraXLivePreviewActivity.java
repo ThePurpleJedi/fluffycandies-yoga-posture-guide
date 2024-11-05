@@ -75,24 +75,7 @@ import java.util.List;
 public final class CameraXLivePreviewActivity extends AppCompatActivity
     implements OnItemSelectedListener, CompoundButton.OnCheckedChangeListener {
   private static final String TAG = "CameraXLivePreview";
-
-  private static final String OBJECT_DETECTION = "Object Detection";
-  private static final String OBJECT_DETECTION_CUSTOM = "Custom Object Detection";
-  private static final String CUSTOM_AUTOML_OBJECT_DETECTION =
-      "Custom AutoML Object Detection (Flower)";
-  private static final String FACE_DETECTION = "Face Detection";
-  private static final String BARCODE_SCANNING = "Barcode Scanning";
-  private static final String IMAGE_LABELING = "Image Labeling";
-  private static final String IMAGE_LABELING_CUSTOM = "Custom Image Labeling (Birds)";
-  private static final String CUSTOM_AUTOML_LABELING = "Custom AutoML Image Labeling (Flower)";
   private static final String POSE_DETECTION = "Pose Detection";
-  private static final String SELFIE_SEGMENTATION = "Selfie Segmentation";
-  private static final String TEXT_RECOGNITION_LATIN = "Text Recognition Latin";
-  private static final String TEXT_RECOGNITION_CHINESE = "Text Recognition Chinese";
-  private static final String TEXT_RECOGNITION_DEVANAGARI = "Text Recognition Devanagari";
-  private static final String TEXT_RECOGNITION_JAPANESE = "Text Recognition Japanese";
-  private static final String TEXT_RECOGNITION_KOREAN = "Text Recognition Korean";
-  private static final String FACE_MESH_DETECTION = "Face Mesh Detection (Beta)";
 
   private static final String STATE_SELECTED_MODEL = "selected_model";
 
@@ -106,7 +89,7 @@ public final class CameraXLivePreviewActivity extends AppCompatActivity
   @Nullable private VisionImageProcessor imageProcessor;
   private boolean needUpdateGraphicOverlayImageSourceInfo;
 
-  private String selectedModel = OBJECT_DETECTION;
+  private String selectedModel = POSE_DETECTION;
   private int lensFacing = CameraSelector.LENS_FACING_BACK;
   private CameraSelector cameraSelector;
 
@@ -116,7 +99,7 @@ public final class CameraXLivePreviewActivity extends AppCompatActivity
     Log.d(TAG, "onCreate");
 
     if (savedInstanceState != null) {
-      selectedModel = savedInstanceState.getString(STATE_SELECTED_MODEL, OBJECT_DETECTION);
+      selectedModel = savedInstanceState.getString(STATE_SELECTED_MODEL, POSE_DETECTION);
     }
     cameraSelector = new CameraSelector.Builder().requireLensFacing(lensFacing).build();
 
@@ -136,7 +119,7 @@ public final class CameraXLivePreviewActivity extends AppCompatActivity
     // Creating adapter for spinner
     ArrayAdapter<String> dataAdapter = new ArrayAdapter<>(this, R.layout.spinner_style, options);
     // Drop down layout style - list view with radio button
-    // dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+    dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
     // attaching data adapter to spinner
     spinner.setAdapter(dataAdapter);
     spinner.setOnItemSelectedListener(this);
@@ -144,7 +127,7 @@ public final class CameraXLivePreviewActivity extends AppCompatActivity
     ToggleButton facingSwitch = findViewById(R.id.facing_switch);
     facingSwitch.setOnCheckedChangeListener(this);
 
-    new ViewModelProvider(this, AndroidViewModelFactory.getInstance(getApplication()))
+    new ViewModelProvider(this, (ViewModelProvider.Factory) AndroidViewModelFactory.getInstance(getApplication()))
         .get(CameraXViewModel.class)
         .getProcessCameraProvider()
         .observe(

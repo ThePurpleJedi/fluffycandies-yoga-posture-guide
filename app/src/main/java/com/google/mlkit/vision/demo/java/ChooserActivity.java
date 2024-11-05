@@ -1,9 +1,11 @@
 package com.google.mlkit.vision.demo.java;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.StrictMode;
+
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -13,7 +15,6 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
-import com.google.mlkit.vision.demo.BuildConfig;
 import com.google.mlkit.vision.demo.R;
 
 /** Demo app chooser which allows you pick from all available testing Activities. */
@@ -34,16 +35,6 @@ public final class ChooserActivity extends AppCompatActivity
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
-    if (BuildConfig.DEBUG) {
-      StrictMode.setThreadPolicy(
-          new StrictMode.ThreadPolicy.Builder().detectAll().penaltyLog().build());
-      StrictMode.setVmPolicy(
-          new StrictMode.VmPolicy.Builder()
-              .detectLeakedSqlLiteObjects()
-              .detectLeakedClosableObjects()
-              .penaltyLog()
-              .build());
-    }
     super.onCreate(savedInstanceState);
     Log.d(TAG, "onCreate");
 
@@ -53,7 +44,7 @@ public final class ChooserActivity extends AppCompatActivity
     ListView listView = findViewById(R.id.test_activity_list_view);
 
     MyArrayAdapter adapter = new MyArrayAdapter(this, android.R.layout.simple_list_item_2, CLASSES);
-    adapter.setDescriptionIds(DESCRIPTION_IDS);
+    adapter.setDescriptionIds();
 
     listView.setAdapter(adapter);
     listView.setOnItemClickListener(this);
@@ -78,8 +69,10 @@ public final class ChooserActivity extends AppCompatActivity
       classes = objects;
     }
 
+    @SuppressLint("InflateParams")
+    @NonNull
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(int position, View convertView, @NonNull ViewGroup parent) {
       View view = convertView;
 
       if (convertView == null) {
@@ -94,8 +87,8 @@ public final class ChooserActivity extends AppCompatActivity
       return view;
     }
 
-    void setDescriptionIds(int[] descriptionIds) {
-      this.descriptionIds = descriptionIds;
+    void setDescriptionIds() {
+      this.descriptionIds = ChooserActivity.DESCRIPTION_IDS;
     }
   }
 }
