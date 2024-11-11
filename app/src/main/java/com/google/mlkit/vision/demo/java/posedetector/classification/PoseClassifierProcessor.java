@@ -36,7 +36,9 @@ import java.util.Locale;
  */
 public class PoseClassifierProcessor {
   private static final String TAG = "PoseClassifierProcessor";
+
   private static final String POSE_SAMPLES_FILE = "pose/yoga_poses.csv";
+
 
   // Specify classes for which we want rep counting.
   // These are the labels in the given {@code POSE_SAMPLES_FILE}. You can set your own class labels
