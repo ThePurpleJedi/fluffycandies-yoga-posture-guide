@@ -48,10 +48,9 @@
   <PreferenceCategory android:title="@string/pref_category_barcode_scanning">
 
     <SwitchPreference
-        android:defaultValue="true"
         android:key="@string/pref_key_enable_auto_zoom"
         android:persistent="true"
-        android:title="@string/pref_title_enable_auto_zoom"/>
+        android:title="@string/pref_title_enable_auto_zoom" />
 
   </PreferenceCategory>
 
@@ -178,11 +177,11 @@
         android:persistent="true"
         android:title="@string/pref_title_pose_detector_rescale_z"/>
     <SwitchPreference
-        android:defaultValue="false"
+        android:defaultValue="true"
         android:key="@string/pref_key_pose_detector_run_classification"
         android:persistent="true"
-        android:title="@string/pref_title_pose_detector_run_classification"
-        android:summary="@string/pref_summary_pose_detector_run_classification"/>
+        android:summary="@string/pref_summary_pose_detector_run_classification"
+        android:title="@string/pref_title_pose_detector_run_classification" />
   </PreferenceCategory>
 
   <PreferenceCategory android:title="@string/pref_category_segmentation">
