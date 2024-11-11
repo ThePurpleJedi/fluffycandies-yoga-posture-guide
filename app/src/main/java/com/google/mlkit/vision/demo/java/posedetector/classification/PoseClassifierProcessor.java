@@ -36,7 +36,7 @@ import java.util.Locale;
  */
 public class PoseClassifierProcessor {
   private static final String TAG = "PoseClassifierProcessor";
-  private static final String POSE_SAMPLES_FILE = "pose/fitness_pose_samples.csv";
+  private static final String POSE_SAMPLES_FILE = "pose/fitness_poses_csvs_out.csv";
 
   // Specify classes for which we want rep counting.
   // These are the labels in the given {@code POSE_SAMPLES_FILE}. You can set your own class labels
@@ -50,9 +50,9 @@ public class PoseClassifierProcessor {
   private final boolean isStreamMode;
 
   private EMASmoothing emaSmoothing;
-  private List<RepetitionCounter> repCounters;
+  private List<CountdownTimer> countdownTimers;
   private PoseClassifier poseClassifier;
-  private String lastRepResult;
+  private String lastCountResult;
 
   @WorkerThread
   public PoseClassifierProcessor(Context context, boolean isStreamMode) {
@@ -60,8 +60,8 @@ public class PoseClassifierProcessor {
     this.isStreamMode = isStreamMode;
     if (isStreamMode) {
       emaSmoothing = new EMASmoothing();
-      repCounters = new ArrayList<>();
-      lastRepResult = "";
+      countdownTimers = new ArrayList<>();
+      lastCountResult = "";
     }
     loadPoseSamples(context);
   }
@@ -86,7 +86,7 @@ public class PoseClassifierProcessor {
     poseClassifier = new PoseClassifier(poseSamples);
     if (isStreamMode) {
       for (String className : POSE_CLASSES) {
-        repCounters.add(new RepetitionCounter(className));
+        countdownTimers.add(new CountdownTimer(className));
       }
     }
   }
@@ -112,23 +112,23 @@ public class PoseClassifierProcessor {
 
       // Return early without updating repCounter if no pose found.
       if (pose.getAllPoseLandmarks().isEmpty()) {
-        result.add(lastRepResult);
+        result.add(lastCountResult);
         return result;
       }
 
-      for (RepetitionCounter repCounter : repCounters) {
-        int repsBefore = repCounter.getNumRepeats();
-        int repsAfter = repCounter.addClassificationResult(classification);
-        if (repsAfter > repsBefore) {
-          // Play a fun beep when rep counter updates.
+      for (CountdownTimer countdownTimer : countdownTimers) {
+        int timeBefore = countdownTimer.getTimeCount();
+        int timeAfter = countdownTimer.addClassificationResult(classification);
+        if (timeAfter > timeBefore) {
+          // Play a fun beep when countdown updates.
           ToneGenerator tg = new ToneGenerator(AudioManager.STREAM_NOTIFICATION, 100);
           tg.startTone(ToneGenerator.TONE_PROP_BEEP);
-          lastRepResult = String.format(
-              Locale.US, "%s : %d reps", repCounter.getClassName(), repsAfter);
+          lastCountResult = String.format(
+              Locale.US, "%s : %d reps", countdownTimer.getClassName(), timeAfter);
           break;
         }
       }
-      result.add(lastRepResult);
+      result.add(lastCountResult);
     }
 
     // Add maxConfidence class of current frame to result if pose is found.

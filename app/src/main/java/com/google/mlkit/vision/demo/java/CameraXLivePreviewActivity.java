@@ -67,6 +67,7 @@ import com.google.mlkit.vision.text.japanese.JapaneseTextRecognizerOptions;
 import com.google.mlkit.vision.text.korean.KoreanTextRecognizerOptions;
 import com.google.mlkit.vision.text.latin.TextRecognizerOptions;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /** Live preview demo app for ML Kit APIs using CameraX. */
@@ -76,12 +77,15 @@ public final class CameraXLivePreviewActivity extends AppCompatActivity
     implements OnItemSelectedListener, CompoundButton.OnCheckedChangeListener {
   private static final String TAG = "CameraXLivePreview";
   private static final String POSE_DETECTION = "Pose Detection";
-
   private static final String STATE_SELECTED_MODEL = "selected_model";
-
+  private static final String TREE = "tree";
+  private static final String PLANK = "plank";
+  private static final String GODDESS = "goddess";
+  private static final String DOWN_DOG = "downdog";
+  private static final String WARRIOR2 = "warrior";
+  private static final String STATE_SELECTED_POSE = "selected_pose";
   private PreviewView previewView;
   private GraphicOverlay graphicOverlay;
-
   @Nullable private ProcessCameraProvider cameraProvider;
   @Nullable private Camera camera;
   @Nullable private Preview previewUseCase;
@@ -90,6 +94,7 @@ public final class CameraXLivePreviewActivity extends AppCompatActivity
   private boolean needUpdateGraphicOverlayImageSourceInfo;
 
   private String selectedModel = POSE_DETECTION;
+  private String selectedPose = TREE;
   private int lensFacing = CameraSelector.LENS_FACING_BACK;
   private CameraSelector cameraSelector;
 
@@ -98,9 +103,7 @@ public final class CameraXLivePreviewActivity extends AppCompatActivity
     super.onCreate(savedInstanceState);
     Log.d(TAG, "onCreate");
 
-    if (savedInstanceState != null) {
-      selectedModel = savedInstanceState.getString(STATE_SELECTED_MODEL, POSE_DETECTION);
-    }
+    selectedModel = POSE_DETECTION;
     cameraSelector = new CameraSelector.Builder().requireLensFacing(lensFacing).build();
 
     setContentView(R.layout.activity_vision_camerax_live_preview);
@@ -113,14 +116,14 @@ public final class CameraXLivePreviewActivity extends AppCompatActivity
       Log.d(TAG, "graphicOverlay is null");
     }
 
-    Spinner spinner = findViewById(R.id.spinner);
-    List<String> options = new ArrayList<>();
+    if (savedInstanceState != null)
+      selectedPose = savedInstanceState.getString(STATE_SELECTED_POSE, TREE);
 
-    // Creating adapter for spinner
+    Spinner spinner = findViewById(R.id.spinner);
+
+    List<String> options = Arrays.asList(TREE, PLANK, DOWN_DOG, WARRIOR2, GODDESS);
     ArrayAdapter<String> dataAdapter = new ArrayAdapter<>(this, R.layout.spinner_style, options);
-    // Drop down layout style - list view with radio button
     dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-    // attaching data adapter to spinner
     spinner.setAdapter(dataAdapter);
     spinner.setOnItemSelectedListener(this);
 
@@ -152,14 +155,15 @@ public final class CameraXLivePreviewActivity extends AppCompatActivity
   protected void onSaveInstanceState(@NonNull Bundle bundle) {
     super.onSaveInstanceState(bundle);
     bundle.putString(STATE_SELECTED_MODEL, selectedModel);
+    bundle.putString(STATE_SELECTED_POSE, selectedPose);
   }
 
   @Override
   public synchronized void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
     // An item was selected. You can retrieve the selected item using
     // parent.getItemAtPosition(pos)
-    selectedModel = parent.getItemAtPosition(pos).toString();
-    Log.d(TAG, "Selected model: " + selectedModel);
+    selectedPose = parent.getItemAtPosition(pos).toString();
+    Log.d(TAG, "Selected pose: " + selectedPose);
     bindAnalysisUseCase();
   }
 
