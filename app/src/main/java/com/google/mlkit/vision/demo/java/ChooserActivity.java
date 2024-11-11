@@ -22,12 +22,6 @@ public final class ChooserActivity extends AppCompatActivity
     implements AdapterView.OnItemClickListener {
   private static final String TAG = "ChooserActivity";
 
-  // CameraX is only available on API 21+
-  private static final Class<?>[] CLASSES =
-          new Class<?>[] {
-            CameraXLivePreviewActivity.class
-          };
-
   private static final int[] DESCRIPTION_IDS =
           new int[] {
             R.string.desc_camerax_live_preview_activity,
@@ -38,16 +32,7 @@ public final class ChooserActivity extends AppCompatActivity
     super.onCreate(savedInstanceState);
     Log.d(TAG, "onCreate");
 
-    setContentView(R.layout.activity_chooser);
-
-    // Set up ListView and Adapter
-    ListView listView = findViewById(R.id.test_activity_list_view);
-
-    MyArrayAdapter adapter = new MyArrayAdapter(this, android.R.layout.simple_list_item_2, CLASSES);
-    adapter.setDescriptionIds();
-
-    listView.setAdapter(adapter);
-    listView.setOnItemClickListener(this);
+    startActivity(new Intent(this, CameraXLivePreviewActivity.class));
   }
 
   @Override
