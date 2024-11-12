@@ -16,6 +16,8 @@
 
 package com.google.mlkit.vision.demo.java.posedetector.classification;
 
+import android.util.Log;
+
 /**
  * Counts reps for the give class.
  */
@@ -51,6 +53,8 @@ public class CountdownTimer {
     if (poseConfidence > threshold) {
       timeCount++;
     }
+
+    Log.d("Countdown Timer", "countdown = " + timeCount);
 
     return timeCount;
   }
