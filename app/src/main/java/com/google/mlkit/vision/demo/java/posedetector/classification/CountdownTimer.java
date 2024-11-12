@@ -54,7 +54,7 @@ public class CountdownTimer {
       timeCount++;
     }
 
-    Log.d("Countdown Timer", "countdown = " + timeCount);
+    Log.d("Countdown Timer", className + " countdown = " + timeCount);
 
     return timeCount;
   }

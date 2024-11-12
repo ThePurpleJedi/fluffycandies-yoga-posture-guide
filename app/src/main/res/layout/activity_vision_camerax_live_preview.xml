@@ -49,11 +49,12 @@
         android:textOff=""
         android:textOn="" />
 
-    <Spinner
-        android:id="@+id/spinner"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
-
   </LinearLayout>
+
+  <Button
+      android:id="@+id/back_to_home"
+      android:layout_width="60dp"
+      android:layout_height="59dp"
+      android:text="Button" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
