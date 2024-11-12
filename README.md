@@ -24,7 +24,12 @@ Features that are included in this Quickstart app:
 
 * Run the sample code on your Android device or emulator
 * Try extending the code to add new features and functionality
-
+## Some additional Features
+* **Choose the Posture of your choice**:
+    * **Choosing the pose**: This functionality allows you the user to choose the pose that he/she wants to try out , via a home page which has the list of names of the poses. The user will also get the image of the pose which he/she is trying to do after clicking on the name.
+    * **Selecting the pose**: Once the user has chosen the required pose , he/she can now click on a button which takes the user to the page with a live camera , which now will capture the user trying out the pose.
+    * **Helping the user to perform the pose**: The posedetector will now try to detect the pose and display the confidence percent , depending upon the pose the user is trying to perform and the ideal pose.
+    * **CountDown Timer**: A count-down timer will also be present in one of the corners of the screen , which will decrease only if the confidence percentage crosses a given threshold , otherwise it simply resets.
 ## How to use the app
 
 This app supports three usage scenarios: Live Camera, Static Image, and CameraX enabled live camera.
