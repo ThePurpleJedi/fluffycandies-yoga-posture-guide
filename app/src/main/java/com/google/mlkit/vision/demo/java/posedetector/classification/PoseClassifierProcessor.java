@@ -41,13 +41,55 @@ public class PoseClassifierProcessor {
   // Specify classes for which we want rep counting.
   // These are the labels in the given {@code POSE_SAMPLES_FILE}. You can set your own class labels
   // for your pose samples.
-  private static final String TREE = "tree";
-  private static final String PLANK = "plank";
-  private static final String GODDESS = "goddess";
-  private static final String DOWN_DOG = "downdog";
-  private static final String WARRIOR2 = "warrior";
   private static final String[] POSE_CLASSES = {
-          TREE, PLANK, GODDESS, DOWN_DOG, WARRIOR2
+          "Navasana",
+          "Ardha Navasana",
+          "Dhanurasana",
+          "Setu Bandha Sarvangasana",
+          "Baddha Konasana",
+          "Ustrasana",
+          "Marjaryasana",
+          "Bitilasana",
+          "Utkatasana",
+          "Balasana",
+          "Sivasana",
+          "Alanasana",
+          "Bakasana",
+          "Ardha Pincha Mayurasana",
+          "Adho Mukha Svanasana",
+          "Garudasana",
+          "Utthita Hasta Padangusthasana",
+          "Utthita Parsvakonasana",
+          "Pincha Mayurasana",
+          "Uttanasana",
+          "Ardha Chandrasana",
+          "Adho Mukha Vrksasana",
+          "Anjaneyasana",
+          "Supta Kapotasana",
+          "Eka Pada Rajakapotasana",
+          "Phalakasana",
+          "Halasana",
+          "Parsvottanasana",
+          "Parsva Virabhadrasana",
+          "Paschimottanasana",
+          "Padmasana",
+          "Ardha Matsyendrasana",
+          "Salamba Sarvangasana",
+          "Vasisthasana",
+          "Salamba Bhujangasana",
+          "Hanumanasana",
+          "Malasana",
+          "Uttanasana",
+          "Ashta Chandrasana",
+          "Upavistha Konasana",
+          "Vrksasana",
+          "Trikonasana",
+          "Urdhva Mukha Svsnssana",
+          "Virabhadrasana One",
+          "Virabhadrasana Two",
+          "Virabhadrasana Three",
+          "Urdhva Dhanurasana",
+          "Camatkarasana"
   };
 
   private final boolean isStreamMode;
@@ -127,7 +169,7 @@ public class PoseClassifierProcessor {
           ToneGenerator tg = new ToneGenerator(AudioManager.STREAM_NOTIFICATION, 100);
           tg.startTone(ToneGenerator.TONE_PROP_BEEP);
           lastCountResult = String.format(
-              Locale.US, "%s : %d reps", countdownTimer.getClassName(), timeAfter);
+              Locale.US, "%s : %d seconds", countdownTimer.getClassName(), timeAfter);
           break;
         }
       }

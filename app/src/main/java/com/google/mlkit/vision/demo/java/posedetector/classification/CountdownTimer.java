@@ -22,48 +22,57 @@ import android.util.Log;
  * Counts down for the given class.
  */
 public class CountdownTimer {
-  // These thresholds can be tuned in conjunction with the Top K values in {@link PoseClassifier}.
-  // The default Top K value is 10 so the range here is [0-10].
-  private static final float DEFAULT_THRESHOLD = 6f; // EXIT THRESHOLD was 4f
+    // These thresholds can be tuned in conjunction with the Top K values in {@link PoseClassifier}.
+    // The default Top K value is 10 so the range here is [0-10].
+    private static final float DEFAULT_THRESHOLD = 6f; // EXIT THRESHOLD was 4f
 
-  private final String className;
-  private final float threshold;
+    private final String className;
+    private final float threshold;
 
-  private int timeCount;
+    private long lastTime;
 
-  public CountdownTimer(String className) {
-    this(className, DEFAULT_THRESHOLD);
-  }
+    private int timeCount;
 
-  public CountdownTimer(String className, float enterThreshold) {
-    this.className = className;
-    this.threshold = enterThreshold;
-    timeCount = 0;
-  }
-
-  /**
-   * Adds a new Pose classification result and updates reps for given class.
-   *
-   * @param classificationResult {link ClassificationResult} of class to confidence values.
-   * @return number of reps.
-   */
-  public int addClassificationResult(ClassificationResult classificationResult) {
-    float poseConfidence = classificationResult.getClassConfidence(className);
-
-    if (poseConfidence > threshold) {
-      timeCount++;
+    public CountdownTimer(String className) {
+        this(className, DEFAULT_THRESHOLD);
     }
 
-    Log.d("Countdown Timer", className + " countdown = " + timeCount);
+    public CountdownTimer(String className, float enterThreshold) {
+        this.className = className;
+        this.threshold = enterThreshold;
+        this.timeCount = 0;
+        this.lastTime = System.currentTimeMillis() / 1000;
 
-    return timeCount;
-  }
+    }
 
-  public String getClassName() {
-    return className;
-  }
+    /**
+     * Adds a new Pose classification result and updates reps for given class.
+     *
+     * @param classificationResult {link ClassificationResult} of class to confidence values.
+     * @return number of reps.
+     */
+    public int addClassificationResult(ClassificationResult classificationResult) {
+        float poseConfidence = classificationResult.getClassConfidence(className);
 
-  public int getTimeCount() {
-    return timeCount;
-  }
+        long currentTime = System.currentTimeMillis() / 1000;
+        if (poseConfidence > threshold && currentTime >= lastTime + 1 && currentTime < lastTime + 2) {
+            timeCount++;
+            lastTime = currentTime;
+        } else if (currentTime >= lastTime + 1) {
+            timeCount = 0;
+            lastTime = currentTime;
+        }
+
+        Log.d("Countdown Timer", className + " countdown = " + timeCount);
+
+        return timeCount;
+    }
+
+    public String getClassName() {
+        return className;
+    }
+
+    public int getTimeCount() {
+        return timeCount;
+    }
 }

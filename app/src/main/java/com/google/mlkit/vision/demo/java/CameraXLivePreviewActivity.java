@@ -74,15 +74,10 @@ import java.util.List;
 @KeepName
 @RequiresApi(VERSION_CODES.LOLLIPOP)
 public final class CameraXLivePreviewActivity extends AppCompatActivity
-    implements OnItemSelectedListener, CompoundButton.OnCheckedChangeListener {
+    implements CompoundButton.OnCheckedChangeListener {
   private static final String TAG = "CameraXLivePreview";
   private static final String POSE_DETECTION = "Pose Detection";
   private static final String STATE_SELECTED_MODEL = "selected_model";
-  private static final String TREE = "tree";
-  private static final String PLANK = "plank";
-  private static final String GODDESS = "goddess";
-  private static final String DOWN_DOG = "downdog";
-  private static final String WARRIOR2 = "warrior";
   private static final String STATE_SELECTED_POSE = "selected_pose";
   private PreviewView previewView;
   private GraphicOverlay graphicOverlay;
@@ -94,7 +89,7 @@ public final class CameraXLivePreviewActivity extends AppCompatActivity
   private boolean needUpdateGraphicOverlayImageSourceInfo;
 
   private String selectedModel = POSE_DETECTION;
-  private String selectedPose = TREE;
+  private String selectedPose = "";
   private int lensFacing = CameraSelector.LENS_FACING_BACK;
   private CameraSelector cameraSelector;
 
@@ -117,15 +112,10 @@ public final class CameraXLivePreviewActivity extends AppCompatActivity
     }
 
     if (savedInstanceState != null)
-      selectedPose = savedInstanceState.getString(STATE_SELECTED_POSE, TREE);
+      selectedPose = savedInstanceState.getString(STATE_SELECTED_POSE, "def");
 
-    Spinner spinner = findViewById(R.id.spinner);
-
-    List<String> options = Arrays.asList(TREE, PLANK, DOWN_DOG, WARRIOR2, GODDESS);
-    ArrayAdapter<String> dataAdapter = new ArrayAdapter<>(this, R.layout.spinner_style, options);
-    dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-    spinner.setAdapter(dataAdapter);
-    spinner.setOnItemSelectedListener(this);
+    if (selectedPose.equals("def"))
+      Log.d(TAG, "POSE NOT SELECTED!!!");
 
     ToggleButton facingSwitch = findViewById(R.id.facing_switch);
     facingSwitch.setOnCheckedChangeListener(this);
@@ -156,20 +146,6 @@ public final class CameraXLivePreviewActivity extends AppCompatActivity
     super.onSaveInstanceState(bundle);
     bundle.putString(STATE_SELECTED_MODEL, selectedModel);
     bundle.putString(STATE_SELECTED_POSE, selectedPose);
-  }
-
-  @Override
-  public synchronized void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
-    // An item was selected. You can retrieve the selected item using
-    // parent.getItemAtPosition(pos)
-    selectedPose = parent.getItemAtPosition(pos).toString();
-    Log.d(TAG, "Selected pose: " + selectedPose);
-    bindAnalysisUseCase();
-  }
-
-  @Override
-  public void onNothingSelected(AdapterView<?> parent) {
-    // Do nothing.
   }
 
   @Override

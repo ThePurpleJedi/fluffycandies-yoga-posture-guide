@@ -28,6 +28,7 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.google.mlkit.vision.demo.java.CameraXLivePreviewActivity
 import com.google.mlkit.vision.demo.java.ChooserActivity
+import com.google.mlkit.vision.demo.java.PoseSelectionActivity
 import java.util.ArrayList
 
 class EntryChoiceActivity : AppCompatActivity(), ActivityCompat.OnRequestPermissionsResultCallback {
@@ -35,8 +36,12 @@ class EntryChoiceActivity : AppCompatActivity(), ActivityCompat.OnRequestPermiss
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val intent = Intent(this@EntryChoiceActivity, CameraXLivePreviewActivity::class.java)
-        startActivity(intent)
+        setContentView(R.layout.activity_vision_entry_choice)
+
+        findViewById<TextView>(R.id.java_entry_point).setOnClickListener {
+            val intent = Intent(this@EntryChoiceActivity, PoseSelectionActivity::class.java)
+            startActivity(intent)
+        }
 
         if (!allRuntimePermissionsGranted()) {
             getRuntimePermissions()
@@ -49,7 +54,7 @@ class EntryChoiceActivity : AppCompatActivity(), ActivityCompat.OnRequestPermiss
         setContentView(R.layout.activity_vision_entry_choice)
 
         findViewById<TextView>(R.id.java_entry_point).setOnClickListener {
-            val intent = Intent(this@EntryChoiceActivity, CameraXLivePreviewActivity::class.java)
+            val intent = Intent(this@EntryChoiceActivity, PoseSelectionActivity::class.java)
             startActivity(intent)
         }
     }
