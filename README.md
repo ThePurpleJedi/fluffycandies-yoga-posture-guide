@@ -7,16 +7,9 @@ This ML Kit Quickstart app demonstrates how to use and integrate various vision 
 ## Feature List
 
 Features that are included in this Quickstart app:
-* [Object Detection](https://developers.google.com/ml-kit/vision/object-detection/android) - Detect, track, and classify objects in real time and static images.
-* [Face Detection](https://developers.google.com/ml-kit/vision/face-detection/android) - Detect faces in real time and static images.
-* [Face Mesh Detection](https://developers.google.com/ml-kit/vision/face-mesh-detection/android) - Detect face mesh in real time and static images.
-* [Text Recognition](https://developers.google.com/ml-kit/vision/text-recognition/android) - Recognize text in real time and static images.
-* [Barcode Scanning](https://developers.google.com/ml-kit/vision/barcode-scanning/android)  - Scan barcodes in real time and static images.
-* [Image Labeling](https://developers.google.com/ml-kit/vision/image-labeling/android) - Label images in real time and static images.
-* [Custom Image Labeling - Birds](https://developers.google.com/ml-kit/vision/image-labeling/custom-models/android) - Label images of birds with a custom TensorFlow Lite model.
+
 * [Pose Detection](https://developers.google.com/ml-kit/vision/pose-detection/android) - Detect the position of the human body in real time.
-* [Selfie Segmentation](https://developers.google.com/ml-kit/vision/selfie-segmentation/android) - Segment people from the background in real time.
-* [Subject Segmentation](https://developers.google.com/ml-kit/vision/subject-segmentation/android) - Segment multiple subjects from the background in static images.
+
 
 <img src="../screenshots/quickstart-picker.png" width="220"/> <img src="../screenshots/quickstart-image-labeling.png" width="220"/> <img src="../screenshots/quickstart-object-detection.png" width="220"/> <img src="../screenshots/quickstart-pose-detection.png" width="220"/>
 
@@ -29,7 +22,7 @@ Features that are included in this Quickstart app:
     * **Choosing the pose**: This functionality allows you the user to choose the pose that he/she wants to try out , via a home page which has the list of names of the poses. The user will also get the image of the pose which he/she is trying to do after clicking on the name.
     * **Selecting the pose**: Once the user has chosen the required pose , he/she can now click on a button which takes the user to the page with a live camera , which now will capture the user trying out the pose.
     * **Helping the user to perform the pose**: The posedetector will now try to detect the pose and display the confidence percent , depending upon the pose the user is trying to perform and the ideal pose.
-    * **CountDown Timer**: A count-down timer will also be present in one of the corners of the screen , which will decrease only if the confidence percentage crosses a given threshold , otherwise it simply resets.
+    * **CountDown Timer**: A count-down timer will also be present in one of the corners of the screen , which will decrease only if the confidence percentage crosses a given threshold , otherwise it simply resets , thus forcing the user to hold the correct pose for a minimum of `T` seconds in order for him/her to learn it.
 ## How to use the app
 
 This app supports three usage scenarios: Live Camera, Static Image, and CameraX enabled live camera.
@@ -39,26 +32,13 @@ It uses the camera preview as input and contains these API workflows: Object det
 * Camera
     * Preview size - Specify the preview size of rear/front camera manually (Default size is chosen appropriately based on screen size)
     * Enable live viewport - Toggle between blocking camera preview by API processing and result rendering or not
-* Object detection / Custom Object Detection
-    * Enable multiple objects -- Enable multiple objects to be detected at once
-    * Enable classification -- Enable classification for each detected object
-* Face Detection
-    * Landmark mode -- Toggle between showing no or all facial landmarks
-    * Contour mode -- Toggle between showing no or all contours
-    * Classification mode -- Toggle between showing no or all classifications (smiling, eyes open/closed)
-    * Performance mode -- Toggle between two operating modes (Fast or Accurate)
-    * Face tracking -- Enable or disable face tracking
-    * Minimum face size -- Choose the proportion of the head width to the image width
-* Face Mesh Detection
-    * Use Case -- Selects from `Bounding Box only` and `Face Mesh`
+
 * Pose Detection
     * Performance mode -- Allows you to switch between "Fast" and "Accurate" operation mode
     * Show in-frame likelihood -- Displays InFrameLikelihood score for each landmark
     * Visualize z value -- Uses different colors to indicate z difference (red: smaller z, blue: larger z)
     * Rescale z value for visualization -- Maps the smallest z value to the most red and the largest z value to the most blue. This makes z difference more obvious
     * Run classification -- Classify squat and pushup poses. Count reps in streaming mode.
-* Selfie Segmentation
-    * Enable raw size mask -- Asks the segmenter to return the raw size mask which matches the model output size.
 
 ### Static Image scenario
 The static image scenario is identical to the live camera scenario, but instead relies on images fed into the app through the gallery.
