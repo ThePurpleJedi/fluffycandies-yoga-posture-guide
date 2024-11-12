@@ -19,7 +19,7 @@ package com.google.mlkit.vision.demo.java.posedetector.classification;
 import android.util.Log;
 
 /**
- * Counts reps for the give class.
+ * Counts down for the given class.
  */
 public class CountdownTimer {
   // These thresholds can be tuned in conjunction with the Top K values in {@link PoseClassifier}.
