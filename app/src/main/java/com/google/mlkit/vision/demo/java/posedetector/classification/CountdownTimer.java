@@ -17,6 +17,7 @@
 package com.google.mlkit.vision.demo.java.posedetector.classification;
 
 import android.util.Log;
+import com.google.mlkit.vision.demo.java.CameraXLivePreviewActivity;
 
 /**
  * Counts down for the given class.
