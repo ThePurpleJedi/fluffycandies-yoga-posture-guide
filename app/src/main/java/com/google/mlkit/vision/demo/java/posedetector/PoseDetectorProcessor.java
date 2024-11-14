@@ -48,6 +48,7 @@ public class PoseDetectorProcessor
   private final boolean isStreamMode;
   private final Context context;
   private final Executor classificationExecutor;
+  private final String selectedPose;
 
   private PoseClassifierProcessor poseClassifierProcessor;
   /** Internal class to hold Pose and classification results. */
@@ -76,7 +77,9 @@ public class PoseDetectorProcessor
       boolean visualizeZ,
       boolean rescaleZForVisualization,
       boolean runClassification,
-      boolean isStreamMode) {
+      boolean isStreamMode,
+      String selectedPose
+      ) {
     super(context);
     this.showInFrameLikelihood = showInFrameLikelihood;
     this.visualizeZ = visualizeZ;
@@ -86,6 +89,7 @@ public class PoseDetectorProcessor
     this.isStreamMode = isStreamMode;
     this.context = context;
     classificationExecutor = Executors.newSingleThreadExecutor();
+    this.selectedPose = selectedPose;
   }
 
   @Override
@@ -105,7 +109,7 @@ public class PoseDetectorProcessor
               List<String> classificationResult = new ArrayList<>();
               if (runClassification) {
                 if (poseClassifierProcessor == null) {
-                  poseClassifierProcessor = new PoseClassifierProcessor(context, isStreamMode);
+                  poseClassifierProcessor = new PoseClassifierProcessor(context, isStreamMode, selectedPose);
                 }
                 classificationResult = poseClassifierProcessor.getPoseResult(pose);
               }
@@ -124,7 +128,7 @@ public class PoseDetectorProcessor
               List<String> classificationResult = new ArrayList<>();
               if (runClassification) {
                 if (poseClassifierProcessor == null) {
-                  poseClassifierProcessor = new PoseClassifierProcessor(context, isStreamMode);
+                  poseClassifierProcessor = new PoseClassifierProcessor(context, isStreamMode, selectedPose);
                 }
                 classificationResult = poseClassifierProcessor.getPoseResult(pose);
               }
