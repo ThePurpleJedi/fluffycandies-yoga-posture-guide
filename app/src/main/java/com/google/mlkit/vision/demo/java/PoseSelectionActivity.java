@@ -74,7 +74,7 @@ public class PoseSelectionActivity extends AppCompatActivity
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.activity_chooser);
+        setContentView(R.layout.pose_chooser);
 
         // Set up ListView and Adapter
         ListView listView = findViewById(R.id.test_activity_list_view);

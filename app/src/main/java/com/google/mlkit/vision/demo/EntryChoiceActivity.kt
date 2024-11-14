@@ -26,8 +26,6 @@ import android.util.Log
 import android.widget.TextView
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import com.google.mlkit.vision.demo.java.CameraXLivePreviewActivity
-import com.google.mlkit.vision.demo.java.ChooserActivity
 import com.google.mlkit.vision.demo.java.PoseSelectionActivity
 import java.util.ArrayList
 
