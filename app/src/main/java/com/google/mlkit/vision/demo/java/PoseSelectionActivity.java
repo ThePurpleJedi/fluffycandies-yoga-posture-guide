@@ -88,7 +88,7 @@ public class PoseSelectionActivity extends AppCompatActivity
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         String clicked = POSES[position];
-        Intent intent = new Intent(this, CameraXLivePreviewActivity.class);
+        Intent intent = new Intent(this, PoseDetailsActivity.class);
         intent.putExtra("selected_pose", clicked);
         startActivity(intent);
     }

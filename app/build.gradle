@@ -6,7 +6,7 @@ android {
 
     defaultConfig {
         applicationId "com.google.mlkit.vision.demo"
-        minSdkVersion 21
+        minSdkVersion 21 
         multiDexEnabled true
         targetSdkVersion 34
 
@@ -154,6 +154,8 @@ dependencies {
 
     // On Device Machine Learnings
     implementation "com.google.android.odml:image:1.0.0-beta1"
+
+    implementation "com.caverock:androidsvg:1.4"
 }
 
 configurations {

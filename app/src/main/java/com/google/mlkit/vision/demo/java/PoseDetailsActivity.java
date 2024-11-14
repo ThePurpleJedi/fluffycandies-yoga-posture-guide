@@ -1,5 +1,6 @@
 package com.google.mlkit.vision.demo.java;
 
+import android.content.Intent;
 import android.graphics.BlendMode;
 import android.graphics.BlendModeColorFilter;
 import android.graphics.PorterDuff;
@@ -48,15 +49,16 @@ public final class PoseDetailsActivity extends AppCompatActivity {
       JSONArray posesArray = jsonObject.getJSONArray("Poses");
 
       // Choose a pose by ID or some other logic
-//      int desiredPoseId = Integer.parseInt(savedInstanceState.getString(STATE_SELECTED_POSE, "1"));
-      int desiredPoseId = 1;
+//      int desiredPoseId = 1;
+      Intent intent = getIntent();
+      String desiredPoseName = intent.getStringExtra(STATE_SELECTED_POSE);
+
       for (int i = 0; i < posesArray.length(); i++) {
         JSONObject poseObject = posesArray.getJSONObject(i);
-        int id = poseObject.getInt("id");
+        String sanskritName = poseObject.getString("sanskrit_name");
 
-        if (id == desiredPoseId) {
+        if (sanskritName.equals(desiredPoseName)) {
           String englishName = poseObject.getString("english_name");
-          String sanskritName = poseObject.getString("sanskrit_name");
           String imageUrl = "pose/images/" + englishName + ".svg?raw=1";
 
           // Set data to views
