@@ -21,8 +21,10 @@ import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 import android.util.Log;
 import android.util.Size;
+import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 import androidx.annotation.NonNull;
@@ -97,6 +99,9 @@ public final class CameraXLivePreviewActivity extends AppCompatActivity
         ToggleButton facingSwitch = findViewById(R.id.facing_switch);
         facingSwitch.setOnCheckedChangeListener(this);
 
+        TextView pose_text = (TextView) findViewById(R.id.pose_name);
+        pose_text.setText(selectedPose);
+
         new ViewModelProvider(this, (ViewModelProvider.Factory) AndroidViewModelFactory.getInstance(getApplication()))
                 .get(CameraXViewModel.class)
                 .getProcessCameraProvider()
@@ -116,6 +121,11 @@ public final class CameraXLivePreviewActivity extends AppCompatActivity
                             SettingsActivity.LaunchSource.CAMERAX_LIVE_PREVIEW);
                     startActivity(intent);
                 });
+
+        Button backButton = findViewById(R.id.back_button);
+        backButton.setOnClickListener(v ->  {
+            this.finish();
+        });
     }
 
     @Override

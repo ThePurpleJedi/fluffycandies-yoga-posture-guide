@@ -38,6 +38,10 @@ public final class PoseDetailsActivity extends AppCompatActivity implements View
         Button continueButton = findViewById(R.id.continue_button);
         continueButton.setOnClickListener(this);
 
+        findViewById(R.id.back_button).setOnClickListener(v -> {
+            this.finish();
+        });
+
         // Locate the views
         TextView englishNameTextView = findViewById(R.id.tvEnglishName);
         TextView sanskritNameTextView = findViewById(R.id.tvSanskritName);
