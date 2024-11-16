@@ -1,5 +1,6 @@
 package com.fluffycandies.yogaguide.java;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,12 +11,14 @@ import android.widget.AdapterView;
 import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.ListView;
+import android.widget.ImageButton;
 
 import android.widget.ArrayAdapter;
 import android.widget.SearchView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.fluffycandies.yogaguide.R;
@@ -29,10 +32,15 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Locale;
+
+import android.speech.RecognizerIntent;
+import android.widget.Toast;
 
 public class PoseSelectionActivity extends AppCompatActivity
         implements AdapterView.OnItemClickListener {
 
+    private static final int VOICE_RECOGNITION_REQUEST_CODE = 100;
     private static Pose[] POSES = null;
     private MyArrayAdapter adapter;
 
@@ -64,8 +72,42 @@ public class PoseSelectionActivity extends AppCompatActivity
                 return true;
             }
         });
+
+        // Set up Voice Search Button
+        ImageButton voiceSearchButton = findViewById(R.id.voice_search_button);
+        voiceSearchButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startVoiceRecognition();
+            }
+        });
     }
 
+    private void startVoiceRecognition() {
+        Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
+        intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
+        intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, Locale.getDefault());
+        intent.putExtra(RecognizerIntent.EXTRA_PROMPT, "Speak the pose name");
+        try {
+            startActivityForResult(intent, VOICE_RECOGNITION_REQUEST_CODE);
+        } catch (Exception e) {
+            Toast.makeText(this, "Voice recognition is not supported on this device.", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == VOICE_RECOGNITION_REQUEST_CODE && resultCode == Activity.RESULT_OK && data != null) {
+            ArrayList<String> matches = data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
+            if (matches != null && !matches.isEmpty()) {
+                String voiceInput = matches.get(0);
+                SearchView searchView = findViewById(R.id.search_view);
+                searchView.setQuery(voiceInput, true); // Set the recognized text in the SearchView
+            }
+        }
+    }
 
     private void populatePosesFromJSON() {
         try {
@@ -105,8 +147,7 @@ public class PoseSelectionActivity extends AppCompatActivity
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         Pose clickedPose = adapter.getItem(position);
         Intent intent = new Intent(this, PoseDetailsActivity.class);
-        intent.putExtra("sanskrit_name", clickedPose.getSanskritName());
-        intent.putExtra("english_name", clickedPose.getEnglishName());
+        intent.putExtra("selected_pose", clickedPose.getSanskritName());
         startActivity(intent);
     }
 
