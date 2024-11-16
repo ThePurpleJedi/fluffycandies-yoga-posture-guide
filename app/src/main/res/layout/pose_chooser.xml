@@ -9,6 +9,12 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:orientation="vertical">
 
+  <SearchView
+      android:id="@+id/search_view"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:queryHint="Search poses" />
+
   <ImageView
       android:id="@+id/imageView"
       android:contentDescription="@string/app_name"
