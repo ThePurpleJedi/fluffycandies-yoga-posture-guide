@@ -19,9 +19,15 @@ package com.fluffycandies.yogaguide.java.posedetector;
 import static java.lang.Math.max;
 import static java.lang.Math.min;
 
+//import org.json.simple.JSONArray;
+//import org.json.simple.JSONObject;
+//import org.json.simple.parser.JSONParser;
+
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.util.Log;
+
 import com.google.mlkit.vision.common.PointF3D;
 import com.fluffycandies.yogaguide.GraphicOverlay;
 import com.fluffycandies.yogaguide.GraphicOverlay.Graphic;
@@ -50,7 +56,33 @@ public class PoseGraphic extends Graphic {
     private final Paint leftPaint;
     private final Paint rightPaint;
     private final Paint whitePaint;
+    private static float[][] angles = new float[4][2];
+    private class Vector{
+        private float x , y , z;
+        public Vector(float x, float y, float z) {
+            this.x = x;
+            this.y = y;
+            this.z = z;
+        }
 
+        public float dotProduct(Vector v) {
+            return this.x * v.x + this.y * v.y + this.z * v.z;
+        }
+
+        public float magnitude() {
+            return (float)Math.sqrt(this.x * this.x + this.y * this.y + this.z * this.z);
+        }
+
+        public float angle(Vector v){
+            float mag1 = this.magnitude();
+            float mag2 = v.magnitude();
+            float dot = this.dotProduct(v);
+            if(mag1 == 0f || mag2 == 0f)
+                return -1f;
+            float rad = (float)Math.acos(dot/(mag1 * mag2));
+            return (float)(Math.toDegrees(rad));
+        }
+    }
     PoseGraphic(
             GraphicOverlay overlay,
             Pose pose,
@@ -81,7 +113,12 @@ public class PoseGraphic extends Graphic {
         rightPaint.setStrokeWidth(STROKE_WIDTH);
         rightPaint.setColor(Color.YELLOW);
     }
-
+    public void init(Vector V , PoseLandmark Point , PoseLandmark Vertex){
+        V.x = Point.getPosition3D().getX() - Vertex.getPosition3D().getX();
+        V.y = Point.getPosition3D().getY() - Vertex.getPosition3D().getY();
+        V.z = Point.getPosition3D().getZ() - Vertex.getPosition3D().getZ();
+        return ;
+    }
     @Override
     public void draw(Canvas canvas) {
         List<PoseLandmark> pose_landmarks = pose.getAllPoseLandmarks();
@@ -123,6 +160,8 @@ public class PoseGraphic extends Graphic {
         PoseLandmark leftAnkle = pose.getPoseLandmark(PoseLandmark.LEFT_ANKLE);
         PoseLandmark rightAnkle = pose.getPoseLandmark(PoseLandmark.RIGHT_ANKLE);
 
+//        Log.d("PoseGraphic", "LEFT_SHOULDER = " + leftShoulder.getPosition3D().getX());
+
         PoseLandmark leftPinky = pose.getPoseLandmark(PoseLandmark.LEFT_PINKY);
         PoseLandmark rightPinky = pose.getPoseLandmark(PoseLandmark.RIGHT_PINKY);
         PoseLandmark leftIndex = pose.getPoseLandmark(PoseLandmark.LEFT_INDEX);
@@ -133,7 +172,55 @@ public class PoseGraphic extends Graphic {
         PoseLandmark rightHeel = pose.getPoseLandmark(PoseLandmark.RIGHT_HEEL);
         PoseLandmark leftFootIndex = pose.getPoseLandmark(PoseLandmark.LEFT_FOOT_INDEX);
         PoseLandmark rightFootIndex = pose.getPoseLandmark(PoseLandmark.RIGHT_FOOT_INDEX);
+        // Calculate angles for 4 pairs of joints , in each half of the body (right and left) .
+        Vector L_Eljoint1 = new Vector(0f , 0f , 0f);
+        Vector L_Eljoint2 = new Vector(0f , 0f , 0f);
+        Vector L_Sjoint1 =  new Vector(0f , 0f , 0f);
+        Vector L_Sjoint2 =  new Vector(0f , 0f , 0f);
+        Vector L_Hjoint1 =  new Vector(0f , 0f , 0f);
+        Vector L_Hjoint2 =  new Vector(0f , 0f , 0f);
+        Vector L_Kjoint1 =  new Vector(0f , 0f , 0f);
+        Vector L_Kjoint2 =  new Vector(0f , 0f , 0f);
 
+        Vector R_Eljoint1 = new Vector(0f , 0f , 0f);
+        Vector R_Eljoint2 = new Vector(0f , 0f , 0f);
+        Vector R_Sjoint1 =  new Vector(0f , 0f , 0f);
+        Vector R_Sjoint2 =  new Vector(0f , 0f , 0f);
+        Vector R_Hjoint1 =  new Vector(0f , 0f , 0f);
+        Vector R_Hjoint2 =  new Vector(0f , 0f , 0f);
+        Vector R_Kjoint1 =  new Vector(0f , 0f , 0f);
+        Vector R_Kjoint2 =  new Vector(0f , 0f , 0f);
+
+        init(L_Eljoint1 , leftShoulder , leftElbow);
+        init(L_Eljoint2 , leftWrist , leftElbow);
+        init(L_Sjoint1 , leftElbow , leftShoulder);
+        init(L_Sjoint2 , leftHip , leftShoulder);
+        init(L_Hjoint1 , leftShoulder , leftHip);
+        init(L_Hjoint2 , leftKnee , leftHip);
+        init(L_Kjoint1 , leftHip , leftKnee);
+        init(L_Kjoint2 , leftHeel , leftKnee);
+
+        init(R_Eljoint1 , leftShoulder , leftElbow);
+        init(R_Eljoint2 , leftWrist , leftElbow);
+        init(R_Sjoint1 , leftElbow , leftShoulder);
+        init(R_Sjoint2 , leftHip , leftShoulder);
+        init(R_Hjoint1 , leftShoulder , leftHip);
+        init(R_Hjoint2 , leftKnee , leftHip);
+        init(R_Kjoint1 , leftHip , leftKnee);
+        init(R_Kjoint2 , leftHeel , leftKnee);
+
+        angles[0][0] = L_Eljoint1.angle(L_Eljoint2);
+        angles[0][1] = R_Eljoint1.angle(R_Eljoint2);
+
+        angles[1][0] = L_Sjoint1.angle(L_Sjoint2);
+        angles[1][1] = R_Sjoint1.angle(R_Sjoint2);
+
+        angles[2][0] = L_Hjoint1.angle(L_Hjoint2);
+        angles[2][1] = R_Hjoint1.angle(R_Hjoint2);
+
+        angles[3][0] = L_Kjoint1.angle(L_Kjoint2);
+        angles[3][1] = R_Kjoint1.angle(R_Kjoint2);
+//        Log.d("PoseGraphic" , "Left_Elbow joint: " + angles[0][0]);
         drawLine(canvas, leftShoulder, rightShoulder, whitePaint);
         drawLine(canvas, leftHip, rightHip, whitePaint);
 
