@@ -17,64 +17,24 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.fluffycandies.yogaguide.R;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+import org.json.JSONException;
+
+import java.io.IOException;
+import java.io.InputStream;
+
 public class PoseSelectionActivity extends AppCompatActivity
         implements AdapterView.OnItemClickListener {
-    private static final String[] POSES = {
-            "Navasana",
-            "Ardha Navasana",
-            "Dhanurasana",
-            "Setu Bandha Sarvangasana",
-            "Baddha Konasana",
-            "Ustrasana",
-            "Marjaryasana",
-            "Bitilasana",
-            "Utkatasana",
-            "Balasana",
-            "Sivasana",
-            "Alanasana",
-            "Bakasana",
-            "Ardha Pincha Mayurasana",
-            "Adho Mukha Svanasana",
-            "Garudasana",
-            "Utthita Hasta Padangusthasana",
-            "Utthita Parsvakonasana",
-            "Pincha Mayurasana",
-            "Uttanasana",
-            "Ardha Chandrasana",
-            "Adho Mukha Vrksasana",
-            "Anjaneyasana",
-            "Supta Kapotasana",
-            "Eka Pada Rajakapotasana",
-            "Phalakasana",
-            "Halasana",
-            "Parsvottanasana",
-            "Parsva Virabhadrasana",
-            "Paschimottanasana",
-            "Padmasana",
-            "Ardha Matsyendrasana",
-            "Salamba Sarvangasana",
-            "Vasisthasana",
-            "Salamba Bhujangasana",
-            "Hanumanasana",
-            "Malasana",
-            "Uttanasana",
-            "Ashta Chandrasana",
-            "Upavistha Konasana",
-            "Vrksasana",
-            "Trikonasana",
-            "Urdhva Mukha Svsnssana",
-            "Virabhadrasana One",
-            "Virabhadrasana Two",
-            "Virabhadrasana Three",
-            "Urdhva Dhanurasana",
-            "Camatkarasana"
-    };
+    private static String[] POSES = null;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.pose_chooser);
+
+        populatePosesFromJSON();
 
         // Set up ListView and Adapter
         ListView listView = findViewById(R.id.test_activity_list_view);
@@ -83,6 +43,39 @@ public class PoseSelectionActivity extends AppCompatActivity
 
         listView.setAdapter(adapter);
         listView.setOnItemClickListener(this);
+    }
+
+    private void populatePosesFromJSON() {
+        try {
+            String jsonString = loadJSONFromAsset();
+            JSONObject jsonObject = new JSONObject(jsonString);
+            JSONArray posesArray = jsonObject.getJSONArray("Poses");
+
+            POSES = new String[posesArray.length()];
+
+            for (int i = 0; i < posesArray.length(); i++) {
+                JSONObject poseObject = posesArray.getJSONObject(i);
+                POSES[i] = poseObject.getString("sanskrit_name");
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private String loadJSONFromAsset() {
+        String json = null;
+        try {
+            InputStream is = getAssets().open("pose/Poses.json");
+            int size = is.available();
+            byte[] buffer = new byte[size];
+            is.read(buffer);
+            is.close();
+            json = new String(buffer, "UTF-8");
+        } catch (IOException ex) {
+            ex.printStackTrace();
+            // fall through
+        }
+        return json;
     }
 
     @Override

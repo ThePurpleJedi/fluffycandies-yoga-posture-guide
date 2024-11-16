@@ -92,9 +92,12 @@ public final class CameraXLivePreviewActivity extends AppCompatActivity
         else {
             Intent intent = getIntent();
             selectedPose = intent.getStringExtra(STATE_SELECTED_POSE);
-        }
+            if (selectedPose == null || selectedPose.isEmpty()) {
+                Log.d(TAG, "POSE NOT SELECTED!!!");
+                this.finish();
+            }
 
-        Log.d(TAG, "POSE NOT SELECTED!!!");
+        }
 
         ToggleButton facingSwitch = findViewById(R.id.facing_switch);
         facingSwitch.setOnCheckedChangeListener(this);

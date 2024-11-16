@@ -48,13 +48,10 @@ public final class PoseDetailsActivity extends AppCompatActivity implements View
         ImageView poseImageView = findViewById(R.id.ivPoseImage);
 
         try {
-            // Load JSON from assets
             String jsonString = loadJSONFromAsset();
             JSONObject jsonObject = new JSONObject(jsonString);
             JSONArray posesArray = jsonObject.getJSONArray("Poses");
 
-            // Choose a pose by ID or some other logic
-//      int desiredPoseId = 1;
             Intent intent = getIntent();
             selectedPose = intent.getStringExtra(STATE_SELECTED_POSE);
 
@@ -79,7 +76,6 @@ public final class PoseDetailsActivity extends AppCompatActivity implements View
         }
     }
 
-    // Helper method to load JSON from assets
     private String loadJSONFromAsset() {
         String json = null;
         try {
