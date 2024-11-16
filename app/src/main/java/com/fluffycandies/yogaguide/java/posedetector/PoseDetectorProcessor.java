@@ -29,6 +29,9 @@ import com.google.mlkit.vision.pose.Pose;
 import com.google.mlkit.vision.pose.PoseDetection;
 import com.google.mlkit.vision.pose.PoseDetector;
 import com.google.mlkit.vision.pose.PoseDetectorOptionsBase;
+
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.Executor;
@@ -48,7 +51,7 @@ public class PoseDetectorProcessor
   private final boolean isStreamMode;
   private final Context context;
   private final Executor classificationExecutor;
-  private final String selectedPose;
+  private final JSONObject selectedPose;
 
   private PoseClassifierProcessor poseClassifierProcessor;
   /** Internal class to hold Pose and classification results. */
@@ -78,7 +81,7 @@ public class PoseDetectorProcessor
       boolean rescaleZForVisualization,
       boolean runClassification,
       boolean isStreamMode,
-      String selectedPose
+      JSONObject selectedPose
       ) {
     super(context);
     this.showInFrameLikelihood = showInFrameLikelihood;
@@ -109,9 +112,9 @@ public class PoseDetectorProcessor
               List<String> classificationResult = new ArrayList<>();
               if (runClassification) {
                 if (poseClassifierProcessor == null) {
-                  poseClassifierProcessor = new PoseClassifierProcessor(context, isStreamMode, selectedPose);
+                  poseClassifierProcessor = new PoseClassifierProcessor(context, isStreamMode);
                 }
-                classificationResult = poseClassifierProcessor.getPoseResult(pose);
+                classificationResult = poseClassifierProcessor.getPoseResult(pose, selectedPose);
               }
               return new PoseWithClassification(pose, classificationResult);
             });
@@ -128,9 +131,9 @@ public class PoseDetectorProcessor
               List<String> classificationResult = new ArrayList<>();
               if (runClassification) {
                 if (poseClassifierProcessor == null) {
-                  poseClassifierProcessor = new PoseClassifierProcessor(context, isStreamMode, selectedPose);
+                  poseClassifierProcessor = new PoseClassifierProcessor(context, isStreamMode);
                 }
-                classificationResult = poseClassifierProcessor.getPoseResult(pose);
+                classificationResult = poseClassifierProcessor.getPoseResult(pose, selectedPose);
               }
               return new PoseWithClassification(pose, classificationResult);
             });
@@ -147,7 +150,7 @@ public class PoseDetectorProcessor
             showInFrameLikelihood,
             visualizeZ,
             rescaleZForVisualization,
-            poseWithClassification.classificationResult));
+            poseWithClassification.classificationResult, selectedPose));
   }
 
   @Override

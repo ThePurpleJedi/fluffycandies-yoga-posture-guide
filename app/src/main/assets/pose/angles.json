@@ -1,0 +1,1132 @@
+{
+  "Angles": [
+  {
+    "Virabhadrasana One": {
+      "left_shoulder": 144.6362738719816,
+      "right_shoulder": 145.0504107684195,
+      "left_elbow": 112.42221159524861,
+      "right_elbow": 119.94337253590628,
+      "left_hip": 109.8509955469266,
+      "right_hip": 111.3141802604025,
+      "left_knee": 119.58630157721562,
+      "right_knee": 118.31747252710093
+    }
+  },
+  {
+    "Vrksasana": {
+      "left_shoulder": 122.20125682443265,
+      "right_shoulder": 124.6187755693064,
+      "left_elbow": 131.46583752353604,
+      "right_elbow": 118.59396611093594,
+      "left_hip": 108.24898747114169,
+      "right_hip": 91.57574975463663,
+      "left_knee": 66.54327971676598,
+      "right_knee": 44.1479400098669
+    }
+  },
+  {
+    "Salamba Sarvangasana": {
+      "left_shoulder": 73.391320649254,
+      "right_shoulder": 68.74503605085235,
+      "left_elbow": 93.27048495010935,
+      "right_elbow": 91.69557769829625,
+      "left_hip": 126.32500413600523,
+      "right_hip": 118.89904645843538,
+      "left_knee": 135.12858426460397,
+      "right_knee": 135.95497087215338
+    }
+  },
+  {
+    "Hanumanasana": {
+      "left_shoulder": 129.26984932115909,
+      "right_shoulder": 127.71864080366198,
+      "left_elbow": 137.13201835434114,
+      "right_elbow": 139.44279113766495,
+      "left_hip": 104.76009273435663,
+      "right_hip": 106.67319174892945,
+      "left_knee": 149.94328967083882,
+      "right_knee": 147.05985986531954
+    }
+  },
+  {
+    "Virabhadrasana Three": {
+      "left_shoulder": 122.3744992884529,
+      "right_shoulder": 128.51360704246704,
+      "left_elbow": 124.7402395573939,
+      "right_elbow": 120.27722526473093,
+      "left_hip": 119.4309546501873,
+      "right_hip": 121.51312341464349,
+      "left_knee": 153.62527952173647,
+      "right_knee": 149.21679187199368
+    }
+  },
+  {
+    "Baddha Konasana": {
+      "left_shoulder": 60.895687455528304,
+      "right_shoulder": 62.58635567498996,
+      "left_elbow": 130.0915092977508,
+      "right_elbow": 136.83034132194857,
+      "left_hip": 73.06953530948836,
+      "right_hip": 73.69262031952002,
+      "left_knee": 35.48979451175959,
+      "right_knee": 33.50982419954578
+    }
+  },
+  {
+    "Ustrasana": {
+      "left_shoulder": 71.40759183986918,
+      "right_shoulder": 71.66196551691571,
+      "left_elbow": 146.21610690830278,
+      "right_elbow": 149.23671123267025,
+      "left_hip": 104.21546251390313,
+      "right_hip": 106.66426816434394,
+      "left_knee": 97.0560692075058,
+      "right_knee": 95.07094490167502
+    }
+  },
+  {
+    "Supta Kapotasana": {
+      "left_shoulder": 30.349483362309048,
+      "right_shoulder": 40.66586899822565,
+      "left_elbow": 123.97494346986232,
+      "right_elbow": 123.94863737018436,
+      "left_hip": 60.113742162909354,
+      "right_hip": 60.425576273923,
+      "left_knee": 76.31586940320611,
+      "right_knee": 76.81176186182333
+    }
+  },
+  {
+    "Alanasana": {
+      "left_shoulder": 155.17925618899227,
+      "right_shoulder": 156.54155739800262,
+      "left_elbow": 115.1305946359636,
+      "right_elbow": 118.42691207660133,
+      "left_hip": 113.75974947601794,
+      "right_hip": 100.46300849188306,
+      "left_knee": 116.43135853529151,
+      "right_knee": 110.04671562891063
+    }
+  },
+  {
+    "Salamba Bhujangasana": {
+      "left_shoulder": 40.53215693548884,
+      "right_shoulder": 44.95255098424092,
+      "left_elbow": 120.50703519029022,
+      "right_elbow": 121.82394277965047,
+      "left_hip": 124.2485852165836,
+      "right_hip": 124.98562053049224,
+      "left_knee": 149.27113157869275,
+      "right_knee": 155.06935020742816
+    }
+  },
+  {
+    "Urdhva Dhanurasana": {
+      "left_shoulder": 127.70586709137471,
+      "right_shoulder": 135.19421659514163,
+      "left_elbow": 140.48406467260276,
+      "right_elbow": 148.53901387017729,
+      "left_hip": 95.44679878514683,
+      "right_hip": 91.48479049683064,
+      "left_knee": 131.44654213349068,
+      "right_knee": 125.99063375704281
+    }
+  },
+  {
+    "Navasana": {
+      "left_shoulder": 64.22588128655725,
+      "right_shoulder": 64.92518671170967,
+      "left_elbow": 117.41686381642016,
+      "right_elbow": 117.59987096924829,
+      "left_hip": 67.85897097870135,
+      "right_hip": 71.44624819305842,
+      "left_knee": 160.37624223165028,
+      "right_knee": 159.65244765734428
+    }
+  },
+  {
+    "Uttanasana": {
+      "left_shoulder": 95.84529265572567,
+      "right_shoulder": 93.57720550398291,
+      "left_elbow": 95.5319783396283,
+      "right_elbow": 92.7729452075955,
+      "left_hip": 54.13106607612303,
+      "right_hip": 50.68454219812795,
+      "left_knee": 142.61969826460106,
+      "right_knee": 142.41565936203378
+    }
+  },
+  {
+    "Balasana": {
+      "left_shoulder": 114.58166142097203,
+      "right_shoulder": 111.64250185318315,
+      "left_elbow": 119.09024488468089,
+      "right_elbow": 113.78623547793678,
+      "left_hip": 46.44071206084201,
+      "right_hip": 46.08249417154617,
+      "left_knee": 68.7011400812907,
+      "right_knee": 72.05374727097778
+    }
+  },
+  {
+    "Garudasana": {
+      "left_shoulder": 113.12191247072646,
+      "right_shoulder": 107.70190358723141,
+      "left_elbow": 126.18608726134272,
+      "right_elbow": 128.38031077141105,
+      "left_hip": 86.71240848737872,
+      "right_hip": 79.33652398516273,
+      "left_knee": 63.59761728664487,
+      "right_knee": 55.882955876453515
+    }
+  },
+  {
+    "Parsva Virabhadrasana": {
+      "left_shoulder": 95.44659987969487,
+      "right_shoulder": 116.87528126556467,
+      "left_elbow": 147.1522815358098,
+      "right_elbow": 158.83803806686637,
+      "left_hip": 107.62653483879276,
+      "right_hip": 110.91741345772591,
+      "left_knee": 123.92962898031018,
+      "right_knee": 106.93191341681533
+    }
+  },
+  {
+    "Adho Mukha Svanasana": {
+      "left_shoulder": 141.4517567292721,
+      "right_shoulder": 144.68817229461672,
+      "left_elbow": 112.01506998818357,
+      "right_elbow": 112.14467059481628,
+      "left_hip": 61.636058923026866,
+      "right_hip": 67.69920752935248,
+      "left_knee": 168.81236486334865,
+      "right_knee": 165.74175907590447
+    }
+  },
+  {
+    "Marjaryasana": {
+      "left_shoulder": 85.40890166914072,
+      "right_shoulder": 88.30605949795117,
+      "left_elbow": 140.72825488165736,
+      "right_elbow": 141.45543993571906,
+      "left_hip": 98.62793662685027,
+      "right_hip": 99.19234209272442,
+      "left_knee": 92.39799609054639,
+      "right_knee": 85.48188040088642
+    }
+  },
+  {
+    "Dhanurasana": {
+      "left_shoulder": 85.9695431823922,
+      "right_shoulder": 89.17750030784714,
+      "left_elbow": 154.45104723682013,
+      "right_elbow": 157.89665224138434,
+      "left_hip": 96.26557244993889,
+      "right_hip": 95.34461719580759,
+      "left_knee": 100.90150066459341,
+      "right_knee": 98.13296992362066
+    }
+  },
+  {
+    "Padmasana": {
+      "left_shoulder": 36.72298462029248,
+      "right_shoulder": 38.29693905261909,
+      "left_elbow": 129.43343095066146,
+      "right_elbow": 123.64073235529716,
+      "left_hip": 79.50009139007211,
+      "right_hip": 80.88971697529226,
+      "left_knee": 26.151719714625944,
+      "right_knee": 29.112944295663144
+    }
+  },
+  {
+    "Ardha Matsyendrasana": {
+      "left_shoulder": 52.18555616618191,
+      "right_shoulder": 51.74360389957829,
+      "left_elbow": 137.30295255685252,
+      "right_elbow": 136.4701932770067,
+      "left_hip": 79.66422597172053,
+      "right_hip": 76.84182011973193,
+      "left_knee": 65.57840785016151,
+      "right_knee": 62.79835736978174
+    }
+  },
+  {
+    "Halasana": {
+      "left_shoulder": 83.51653629581567,
+      "right_shoulder": 80.14143407042876,
+      "left_elbow": 137.01269667005207,
+      "right_elbow": 137.48957259785362,
+      "left_hip": 53.91374175314434,
+      "right_hip": 56.26773858117541,
+      "left_knee": 148.99625242473283,
+      "right_knee": 151.38218601322527
+    }
+  },
+  {
+    "Ashta Chandrasana": {
+      "left_shoulder": 157.49142771447626,
+      "right_shoulder": 159.30242558899258,
+      "left_elbow": 121.13595435435724,
+      "right_elbow": 120.05242478349942,
+      "left_hip": 110.41223607098156,
+      "right_hip": 102.35134640720007,
+      "left_knee": 123.41009035098762,
+      "right_knee": 95.22174645627244
+    }
+  },
+  {
+    "Trikonasana": {
+      "left_shoulder": 110.66939246855382,
+      "right_shoulder": 106.77779557898883,
+      "left_elbow": 153.87025837845854,
+      "right_elbow": 150.58320655485375,
+      "left_hip": 117.95637396907163,
+      "right_hip": 98.8050350617559,
+      "left_knee": 130.1657067805957,
+      "right_knee": 147.4463772035991
+    }
+  },
+  {
+    "Camatkarasana": {
+      "left_shoulder": 129.19631574756903,
+      "right_shoulder": 129.66123969025836,
+      "left_elbow": 158.63628631145906,
+      "right_elbow": 155.0824153992772,
+      "left_hip": 109.63301764281074,
+      "right_hip": 113.4328079963496,
+      "left_knee": 149.1429468748013,
+      "right_knee": 144.8613891500178
+    }
+  },
+  {
+    "Setu Bandha Sarvangasana": {
+      "left_shoulder": 72.41341892840823,
+      "right_shoulder": 70.68511508041799,
+      "left_elbow": 146.33020530900455,
+      "right_elbow": 146.35900926322768,
+      "left_hip": 146.66114313021149,
+      "right_hip": 147.0796396601843,
+      "left_knee": 59.81823248681306,
+      "right_knee": 61.951165472124025
+    }
+  },
+  {
+    "Ardha Chandrasana": {
+      "left_shoulder": 100.19097736507976,
+      "right_shoulder": 103.39829007734956,
+      "left_elbow": 144.31451821852536,
+      "right_elbow": 144.77496442389693,
+      "left_hip": 115.51687150668747,
+      "right_hip": 100.262652652219,
+      "left_knee": 136.12090750636776,
+      "right_knee": 150.3285735876721
+    }
+  },
+  {
+    "Utthita Hasta Padangusthasana": {
+      "left_shoulder": 106.03232056662742,
+      "right_shoulder": 93.43084431426425,
+      "left_elbow": 129.30187262291957,
+      "right_elbow": 126.94504955202486,
+      "left_hip": 92.41107693554461,
+      "right_hip": 95.37769805727912,
+      "left_knee": 124.4782527605712,
+      "right_knee": 147.3567225988634
+    }
+  },
+  {
+    "Sivasana": {
+      "left_shoulder": 60.06174445406085,
+      "right_shoulder": 68.99264403983875,
+      "left_elbow": 129.29616942281365,
+      "right_elbow": 129.93094042891715,
+      "left_hip": 154.7333973699702,
+      "right_hip": 147.16085973858088,
+      "left_knee": 162.78129737413443,
+      "right_knee": 157.2556244933875
+    }
+  },
+  {
+    "Upavistha Konasana": {
+      "left_shoulder": 73.35390817540679,
+      "right_shoulder": 72.54936256001764,
+      "left_elbow": 130.1063016655813,
+      "right_elbow": 138.69930303085945,
+      "left_hip": 67.08529330453682,
+      "right_hip": 69.18861266032978,
+      "left_knee": 148.77828838550744,
+      "right_knee": 151.5121559182931
+    }
+  },
+  {
+    "Paschimottanasana": {
+      "left_shoulder": 97.80304250028699,
+      "right_shoulder": 100.36584204673787,
+      "left_elbow": 103.35336254671755,
+      "right_elbow": 98.38674143621141,
+      "left_hip": 43.74077480986716,
+      "right_hip": 43.59440133954997,
+      "left_knee": 149.72354847567948,
+      "right_knee": 141.5539529154226
+    }
+  },
+  {
+    "Phalakasana": {
+      "left_shoulder": 73.72397959994179,
+      "right_shoulder": 74.31339900141417,
+      "left_elbow": 139.65706695042047,
+      "right_elbow": 134.869330371941,
+      "left_hip": 150.46069599103626,
+      "right_hip": 154.167840689201,
+      "left_knee": 161.23240761867572,
+      "right_knee": 161.48550615366167
+    }
+  },
+  {
+    "Parsvottanasana": {
+      "left_shoulder": 82.59560674882947,
+      "right_shoulder": 82.28678685103924,
+      "left_elbow": 117.33715020377178,
+      "right_elbow": 124.05525291798193,
+      "left_hip": 71.79110142990919,
+      "right_hip": 66.16036820540236,
+      "left_knee": 158.17823531712875,
+      "right_knee": 157.1101421994381
+    }
+  },
+  {
+    "Pincha Mayurasana": {
+      "left_shoulder": 140.31296052494073,
+      "right_shoulder": 132.4776150070735,
+      "left_elbow": 75.69657198256674,
+      "right_elbow": 87.65414264278493,
+      "left_hip": 134.0732613721175,
+      "right_hip": 133.99529071185455,
+      "left_knee": 155.31754189674658,
+      "right_knee": 150.38600167070823
+    }
+  },
+  {
+    "Adho Mukha Vrksasana": {
+      "left_shoulder": 127.55756364223951,
+      "right_shoulder": 136.3463903637524,
+      "left_elbow": 102.77160488411786,
+      "right_elbow": 111.2964120440648,
+      "left_hip": 129.5723331814088,
+      "right_hip": 125.55431640182479,
+      "left_knee": 142.31637798666094,
+      "right_knee": 122.61320392462272
+    }
+  },
+  {
+    "Ardha Pincha Mayurasana": {
+      "left_shoulder": 148.72833739055042,
+      "right_shoulder": 149.4675210937392,
+      "left_elbow": 95.93502653006423,
+      "right_elbow": 101.34899196264082,
+      "left_hip": 59.178683326122176,
+      "right_hip": 60.09540067317493,
+      "left_knee": 169.16220640791593,
+      "right_knee": 169.28411009252608
+    }
+  },
+  {
+    "Ardha Navasana": {
+      "left_shoulder": 58.32945282599777,
+      "right_shoulder": 58.37401805767984,
+      "left_elbow": 107.94369485206782,
+      "right_elbow": 115.76807570568968,
+      "left_hip": 48.73789683699324,
+      "right_hip": 47.835472048263306,
+      "left_knee": 108.31761136675026,
+      "right_knee": 103.6761251414092
+    }
+  },
+  {
+    "Urdhva Mukha Svsnssana": {
+      "left_shoulder": 33.72860973858567,
+      "right_shoulder": 32.7449589780536,
+      "left_elbow": 162.25650638019334,
+      "right_elbow": 160.5072812457101,
+      "left_hip": 124.67444615649167,
+      "right_hip": 125.83890257291075,
+      "left_knee": 146.93406067887463,
+      "right_knee": 151.43738556055138
+    }
+  },
+  {
+    "Bitilasana": {
+      "left_shoulder": 72.53054800157068,
+      "right_shoulder": 72.42151719273612,
+      "left_elbow": 150.4720853480409,
+      "right_elbow": 154.50041243574805,
+      "left_hip": 109.07366689024927,
+      "right_hip": 108.25540666546918,
+      "left_knee": 86.56195447650018,
+      "right_knee": 84.69390557806332
+    }
+  },
+  {
+    "Bakasana": {
+      "left_shoulder": 85.51951317282372,
+      "right_shoulder": 84.83623351926468,
+      "left_elbow": 124.9323779805046,
+      "right_elbow": 122.06355055386562,
+      "left_hip": 33.847426140536314,
+      "right_hip": 32.1857883129758,
+      "left_knee": 73.19020181211383,
+      "right_knee": 71.75599718557726
+    }
+  },
+  {
+    "Virabhadrasana Two": {
+      "left_shoulder": 101.51269400967702,
+      "right_shoulder": 98.38433245889578,
+      "left_elbow": 148.97980223208586,
+      "right_elbow": 137.41067517210556,
+      "left_hip": 100.59438477357783,
+      "right_hip": 97.40144431656614,
+      "left_knee": 101.09741860018771,
+      "right_knee": 101.70852823528362
+    }
+  },
+  {
+    "Utkatasana": {
+      "left_shoulder": 131.38653125732426,
+      "right_shoulder": 135.98700051977153,
+      "left_elbow": 112.12055597333068,
+      "right_elbow": 110.90340942428136,
+      "left_hip": 74.76805488123856,
+      "right_hip": 73.94999703153364,
+      "left_knee": 84.75856305666677,
+      "right_knee": 78.74263353784798
+    }
+  },
+  {
+    "Malasana": {
+      "left_shoulder": 56.51161039123186,
+      "right_shoulder": 57.704794723291045,
+      "left_elbow": 102.03958035006747,
+      "right_elbow": 95.0692748945023,
+      "left_hip": 51.653894202446025,
+      "right_hip": 48.52073804137959,
+      "left_knee": 46.32858994913514,
+      "right_knee": 42.81942365292822
+    }
+  },
+  {
+    "Anjaneyasana": {
+      "left_shoulder": 117.6732174801761,
+      "right_shoulder": 127.30344844486646,
+      "left_elbow": 126.2570637072269,
+      "right_elbow": 123.64428614131522,
+      "left_hip": 100.02812824988834,
+      "right_hip": 94.54474696480654,
+      "left_knee": 99.05411522334347,
+      "right_knee": 96.65267211291456
+    }
+  },
+  {
+    "Eka Pada Rajakapotasana": {
+      "left_shoulder": 114.07915001354364,
+      "right_shoulder": 119.70848394694156,
+      "left_elbow": 94.24262127946285,
+      "right_elbow": 107.38731120913543,
+      "left_hip": 95.41087051725115,
+      "right_hip": 90.15867778988631,
+      "left_knee": 70.98061616857679,
+      "right_knee": 61.3768983010843
+    }
+  },
+  {
+    "Vasisthasana": {
+      "left_shoulder": 106.98725474073899,
+      "right_shoulder": 95.30240389776584,
+      "left_elbow": 149.7407251829284,
+      "right_elbow": 145.622307808435,
+      "left_hip": 140.71608443550582,
+      "right_hip": 132.16803072557002,
+      "left_knee": 132.97671916511388,
+      "right_knee": 134.89033878306708
+    }
+  },
+  {
+    "Utthita Parsvakonasana": {
+      "left_shoulder": 108.59955447631488,
+      "right_shoulder": 104.28282667333389,
+      "left_elbow": 148.07525145629856,
+      "right_elbow": 148.4026065036966,
+      "left_hip": 108.49643444661383,
+      "right_hip": 94.7235247243955,
+      "left_knee": 119.26809898721163,
+      "right_knee": 117.45687597794118
+    }
+  },
+  {
+    "Virabhadrasana One": {
+      "left_shoulder": 140.88978337846746,
+      "right_shoulder": 155.3125749717522,
+      "left_elbow": 103.65374473692343,
+      "right_elbow": 148.89199320030664,
+      "left_hip": 114.5043564736586,
+      "right_hip": 93.03867152928582,
+      "left_knee": 86.38248841177773,
+      "right_knee": 149.1310184668024
+    }
+  },
+  {
+    "Vrksasana": {
+      "left_shoulder": 56.33026686428878,
+      "right_shoulder": 91.83015938208034,
+      "left_elbow": 127.6955068842124,
+      "right_elbow": 126.50406104363228,
+      "left_hip": 150.71217904961904,
+      "right_hip": 77.25875501193703,
+      "left_knee": 113.40494164101088,
+      "right_knee": 39.691879545121736
+    }
+  },
+  {
+    "Salamba Sarvangasana": {
+      "left_shoulder": 34.535604947069416,
+      "right_shoulder": 60.855629512023505,
+      "left_elbow": 110.74879560593939,
+      "right_elbow": 53.345052657941736,
+      "left_hip": 138.34473569943,
+      "right_hip": 132.60331924395672,
+      "left_knee": 157.4983809538481,
+      "right_knee": 159.08005861336792
+    }
+  },
+  {
+    "Hanumanasana": {
+      "left_shoulder": 48.96673276001504,
+      "right_shoulder": 7.326706384761641,
+      "left_elbow": 128.6203664924945,
+      "right_elbow": 85.59201839426174,
+      "left_hip": 110.87942560214378,
+      "right_hip": 113.10606200018505,
+      "left_knee": 141.5118342764789,
+      "right_knee": 149.62230441711822
+    }
+  },
+  {
+    "Virabhadrasana Three": {
+      "left_shoulder": 98.89507896623036,
+      "right_shoulder": 167.13950201839862,
+      "left_elbow": 83.09531880376566,
+      "right_elbow": 132.1313808439209,
+      "left_hip": 115.52195107920889,
+      "right_hip": 173.22800453917017,
+      "left_knee": 170.66703305280353,
+      "right_knee": 160.05501230232517
+    }
+  },
+  {
+    "Baddha Konasana": {
+      "left_shoulder": 69.11332871563287,
+      "right_shoulder": 66.45967747852121,
+      "left_elbow": 146.45045868945448,
+      "right_elbow": 145.22951085367515,
+      "left_hip": 65.85254902598207,
+      "right_hip": 63.179967697718574,
+      "left_knee": 29.370040771249204,
+      "right_knee": 30.54689835207892
+    }
+  },
+  {
+    "Ustrasana": {
+      "left_shoulder": 77.54661050104032,
+      "right_shoulder": 83.88919491781591,
+      "left_elbow": 163.6661645701432,
+      "right_elbow": 170.3379795921072,
+      "left_hip": 100.489018401392,
+      "right_hip": 101.69876682221113,
+      "left_knee": 101.1505442626567,
+      "right_knee": 99.20264199686328
+    }
+  },
+  {
+    "Supta Kapotasana": {
+      "left_shoulder": 19.454594733874366,
+      "right_shoulder": 37.80748155318645,
+      "left_elbow": 123.20389134151762,
+      "right_elbow": 114.7882411457724,
+      "left_hip": 40.19667741084216,
+      "right_hip": 58.44506376220621,
+      "left_knee": 84.91479840187797,
+      "right_knee": 67.88281533310939
+    }
+  },
+  {
+    "Alanasana": {
+      "left_shoulder": 165.2718297707151,
+      "right_shoulder": 146.7233023353097,
+      "left_elbow": 93.3740702379226,
+      "right_elbow": 128.12032019704986,
+      "left_hip": 116.8699812105755,
+      "right_hip": 111.320402828092,
+      "left_knee": 116.93222327622867,
+      "right_knee": 153.87649394678763
+    }
+  },
+  {
+    "Salamba Bhujangasana": {
+      "left_shoulder": 37.27485646378819,
+      "right_shoulder": 29.876328625009926,
+      "left_elbow": 91.28200596491986,
+      "right_elbow": 113.88490508373998,
+      "left_hip": 119.09097608924633,
+      "right_hip": 125.10522793501612,
+      "left_knee": 165.02585209923345,
+      "right_knee": 140.96496642509305
+    }
+  },
+  {
+    "Urdhva Dhanurasana": {
+      "left_shoulder": 127.46316261831596,
+      "right_shoulder": 149.21022106624747,
+      "left_elbow": 145.372085877978,
+      "right_elbow": 163.9105839009481,
+      "left_hip": 111.65635631241543,
+      "right_hip": 91.27985295121168,
+      "left_knee": 137.68730060428192,
+      "right_knee": 116.14269519685747
+    }
+  },
+  {
+    "Navasana": {
+      "left_shoulder": 55.924814774650415,
+      "right_shoulder": 72.12897861103912,
+      "left_elbow": 93.30542820827374,
+      "right_elbow": 108.43261846211513,
+      "left_hip": 67.88502790035889,
+      "right_hip": 80.20777992510854,
+      "left_knee": 154.13535953837584,
+      "right_knee": 157.41491754837168
+    }
+  },
+  {
+    "Uttanasana": {
+      "left_shoulder": 97.87102668623909,
+      "right_shoulder": 85.12279924896353,
+      "left_elbow": 121.03605915558573,
+      "right_elbow": 125.00614309554709,
+      "left_hip": 68.75094015804363,
+      "right_hip": 51.618574502848205,
+      "left_knee": 158.3843163508119,
+      "right_knee": 163.6316004667702
+    }
+  },
+  {
+    "Balasana": {
+      "left_shoulder": 128.18922129001842,
+      "right_shoulder": 112.28647020617724,
+      "left_elbow": 50.6389142707989,
+      "right_elbow": 82.54971720144651,
+      "left_hip": 53.37526476834127,
+      "right_hip": 60.61306731635495,
+      "left_knee": 36.85853881876504,
+      "right_knee": 38.39816432064055
+    }
+  },
+  {
+    "Garudasana": {
+      "left_shoulder": 85.13658584390515,
+      "right_shoulder": 120.14030245648765,
+      "left_elbow": 111.34784057857209,
+      "right_elbow": 74.33263092943878,
+      "left_hip": 77.36222159473303,
+      "right_hip": 75.21708595185991,
+      "left_knee": 47.45479182459713,
+      "right_knee": 105.30775095220588
+    }
+  },
+  {
+    "Parsva Virabhadrasana": {
+      "left_shoulder": 49.00331734458381,
+      "right_shoulder": 169.0230576950547,
+      "left_elbow": 153.858524275505,
+      "right_elbow": 143.45565639999052,
+      "left_hip": 106.93776283191282,
+      "right_hip": 144.0582419857844,
+      "left_knee": 132.39255242459302,
+      "right_knee": 112.05283207982707
+    }
+  },
+  {
+    "Adho Mukha Svanasana": {
+      "left_shoulder": 140.87966677666202,
+      "right_shoulder": 146.62954639752667,
+      "left_elbow": 123.30804540197384,
+      "right_elbow": 97.81344312430414,
+      "left_hip": 54.06091834528003,
+      "right_hip": 51.04648435676494,
+      "left_knee": 176.3690765481402,
+      "right_knee": 164.26355340203136
+    }
+  },
+  {
+    "Marjaryasana": {
+      "left_shoulder": 78.66145818518032,
+      "right_shoulder": 96.8487739160674,
+      "left_elbow": 143.92861595932013,
+      "right_elbow": 139.52511668468003,
+      "left_hip": 105.02535090497557,
+      "right_hip": 95.39075494913438,
+      "left_knee": 85.88808665478633,
+      "right_knee": 74.69787346464682
+    }
+  },
+  {
+    "Dhanurasana": {
+      "left_shoulder": 80.8684867286021,
+      "right_shoulder": 48.89255372909381,
+      "left_elbow": 161.70874890677044,
+      "right_elbow": 156.68358820016604,
+      "left_hip": 87.54113487353935,
+      "right_hip": 111.5798567812669,
+      "left_knee": 89.0817856812187,
+      "right_knee": 113.25737906662033
+    }
+  },
+  {
+    "Padmasana": {
+      "left_shoulder": 63.95159552347813,
+      "right_shoulder": 57.681284016482834,
+      "left_elbow": 141.54995996711173,
+      "right_elbow": 135.90425405805559,
+      "left_hip": 60.43357263543799,
+      "right_hip": 58.73185519442628,
+      "left_knee": 20.172499119510363,
+      "right_knee": 25.702417172403052
+    }
+  },
+  {
+    "Ardha Matsyendrasana": {
+      "left_shoulder": 115.64101038130192,
+      "right_shoulder": 96.69670538078508,
+      "left_elbow": 170.45282103281707,
+      "right_elbow": 128.69103230590008,
+      "left_hip": 101.94088449607676,
+      "right_hip": 104.0331141216748,
+      "left_knee": 98.687944808673,
+      "right_knee": 109.59847167544086
+    }
+  },
+  {
+    "Halasana": {
+      "left_shoulder": 79.46826177058217,
+      "right_shoulder": 95.1583110495654,
+      "left_elbow": 131.92306580450406,
+      "right_elbow": 164.81177404706293,
+      "left_hip": 52.22103216925297,
+      "right_hip": 47.530487251308536,
+      "left_knee": 169.73157100090333,
+      "right_knee": 153.82077500391978
+    }
+  },
+  {
+    "Ashta Chandrasana": {
+      "left_shoulder": 149.58472837448628,
+      "right_shoulder": 164.5002362518424,
+      "left_elbow": 132.6716606990845,
+      "right_elbow": 106.07539936385791,
+      "left_hip": 105.25609540307268,
+      "right_hip": 130.15532756288914,
+      "left_knee": 112.70784140934418,
+      "right_knee": 167.94323119595188
+    }
+  },
+  {
+    "Trikonasana": {
+      "left_shoulder": 78.27512575205489,
+      "right_shoulder": 137.71175682012404,
+      "left_elbow": 156.3420372326819,
+      "right_elbow": 153.72917397063634,
+      "left_hip": 107.88851507345292,
+      "right_hip": 146.3394176870632,
+      "left_knee": 165.7164210086066,
+      "right_knee": 156.27193566894778
+    }
+  },
+  {
+    "Camatkarasana": {
+      "left_shoulder": 139.16957561697737,
+      "right_shoulder": 162.65108595980215,
+      "left_elbow": 173.38388807116522,
+      "right_elbow": 138.9245387690395,
+      "left_hip": 79.68175574010661,
+      "right_hip": 82.65860461269538,
+      "left_knee": 171.94533400464408,
+      "right_knee": 145.96400576065201
+    }
+  },
+  {
+    "Setu Bandha Sarvangasana": {
+      "left_shoulder": 78.5874611552535,
+      "right_shoulder": 70.76158094946082,
+      "left_elbow": 145.69357280629862,
+      "right_elbow": 126.96048329015889,
+      "left_hip": 149.55297687478964,
+      "right_hip": 164.75853428786394,
+      "left_knee": 42.750624122247224,
+      "right_knee": 46.80865176006061
+    }
+  },
+  {
+    "Ardha Chandrasana": {
+      "left_shoulder": 102.5873630264942,
+      "right_shoulder": 105.66325337805561,
+      "left_elbow": 132.14836625595981,
+      "right_elbow": 134.06791510265947,
+      "left_hip": 116.3341522063283,
+      "right_hip": 103.42906194601437,
+      "left_knee": 117.55068175576584,
+      "right_knee": 149.3649990923697
+    }
+  },
+  {
+    "Utthita Hasta Padangusthasana": {
+      "left_shoulder": 134.10351585590885,
+      "right_shoulder": 87.22060294355414,
+      "left_elbow": 152.53986468765927,
+      "right_elbow": 63.18969483294501,
+      "left_hip": 47.116058622754004,
+      "right_hip": 126.53881557515959,
+      "left_knee": 162.94760570743506,
+      "right_knee": 120.51779168027525
+    }
+  },
+  {
+    "Sivasana": {
+      "left_shoulder": 40.10537080299463,
+      "right_shoulder": 67.75376445699428,
+      "left_elbow": 112.41035004691993,
+      "right_elbow": 163.6295853975241,
+      "left_hip": 153.25173604789072,
+      "right_hip": 157.46332741736688,
+      "left_knee": 150.26554990442494,
+      "right_knee": 162.7809784750143
+    }
+  },
+  {
+    "Upavistha Konasana": {
+      "left_shoulder": 114.76204658221215,
+      "right_shoulder": 109.66402414498341,
+      "left_elbow": 170.32611231135132,
+      "right_elbow": 168.60035532205285,
+      "left_hip": 74.33390722639712,
+      "right_hip": 90.3360776246234,
+      "left_knee": 137.74803539911002,
+      "right_knee": 159.00905196901184
+    }
+  },
+  {
+    "Paschimottanasana": {
+      "left_shoulder": 86.67558065994251,
+      "right_shoulder": 87.28644336565397,
+      "left_elbow": 89.95971585019478,
+      "right_elbow": 81.55797273476492,
+      "left_hip": 39.098534811140524,
+      "right_hip": 42.87038293501175,
+      "left_knee": 173.53723329732549,
+      "right_knee": 177.0078438524811
+    }
+  },
+  {
+    "Phalakasana": {
+      "left_shoulder": 75.28715540821251,
+      "right_shoulder": 60.176204657793875,
+      "left_elbow": 166.30344507705072,
+      "right_elbow": 141.56072045383772,
+      "left_hip": 163.57562829819716,
+      "right_hip": 151.49380586132875,
+      "left_knee": 164.36700356911118,
+      "right_knee": 160.72644619857772
+    }
+  },
+  {
+    "Parsvottanasana": {
+      "left_shoulder": 124.88333046531271,
+      "right_shoulder": 114.05968336609716,
+      "left_elbow": 129.2887831712947,
+      "right_elbow": 129.13133936847095,
+      "left_hip": 61.48819181041363,
+      "right_hip": 39.6305771794194,
+      "left_knee": 169.25742533169887,
+      "right_knee": 174.19679447008747
+    }
+  },
+  {
+    "Pincha Mayurasana": {
+      "left_shoulder": 153.72100443658726,
+      "right_shoulder": 122.21618386853302,
+      "left_elbow": 65.35146717188468,
+      "right_elbow": 105.70872509998135,
+      "left_hip": 152.192639370094,
+      "right_hip": 130.7807909668616,
+      "left_knee": 174.69998622682007,
+      "right_knee": 153.97465213109967
+    }
+  },
+  {
+    "Adho Mukha Vrksasana": {
+      "left_shoulder": 156.11782880620157,
+      "right_shoulder": 88.11032695952026,
+      "left_elbow": 150.73528081723492,
+      "right_elbow": 51.5089833242016,
+      "left_hip": 143.4330481741125,
+      "right_hip": 142.7630826695559,
+      "left_knee": 165.76557992956126,
+      "right_knee": 138.62613629763305
+    }
+  },
+  {
+    "Ardha Pincha Mayurasana": {
+      "left_shoulder": 112.81265119492062,
+      "right_shoulder": 140.16110718707023,
+      "left_elbow": 95.69888839922129,
+      "right_elbow": 119.14855161806904,
+      "left_hip": 104.07698912844197,
+      "right_hip": 97.16556292040055,
+      "left_knee": 159.4863289115462,
+      "right_knee": 172.90262549240927
+    }
+  },
+  {
+    "Ardha Navasana": {
+      "left_shoulder": 62.125014807502865,
+      "right_shoulder": 63.07945854462813,
+      "left_elbow": 104.05375593261124,
+      "right_elbow": 114.00577717834496,
+      "left_hip": 45.62296094333681,
+      "right_hip": 47.85394801932538,
+      "left_knee": 107.74535881640915,
+      "right_knee": 101.7503852533157
+    }
+  },
+  {
+    "Urdhva Mukha Svsnssana": {
+      "left_shoulder": 42.852611011152995,
+      "right_shoulder": 18.213215911450188,
+      "left_elbow": 166.6152730367957,
+      "right_elbow": 161.8377986137587,
+      "left_hip": 126.41089151048219,
+      "right_hip": 130.14778835121695,
+      "left_knee": 134.20848991256176,
+      "right_knee": 139.78293845546096
+    }
+  },
+  {
+    "Bitilasana": {
+      "left_shoulder": 64.41845002373543,
+      "right_shoulder": 62.921836929189595,
+      "left_elbow": 160.1587578831262,
+      "right_elbow": 165.13689981598677,
+      "left_hip": 120.27980639841027,
+      "right_hip": 119.30031199775432,
+      "left_knee": 94.28017292188085,
+      "right_knee": 82.33711037712995
+    }
+  },
+  {
+    "Bakasana": {
+      "left_shoulder": 81.90458844360897,
+      "right_shoulder": 85.13313393701874,
+      "left_elbow": 151.20553092256102,
+      "right_elbow": 142.37862928666462,
+      "left_hip": 22.377978024870366,
+      "right_hip": 25.788316854554175,
+      "left_knee": 58.1960190222218,
+      "right_knee": 49.498968125576454
+    }
+  },
+  {
+    "Virabhadrasana Two": {
+      "left_shoulder": 111.53994755980212,
+      "right_shoulder": 106.71338805949644,
+      "left_elbow": 139.1249964720735,
+      "right_elbow": 160.76107767994637,
+      "left_hip": 81.73479198343506,
+      "right_hip": 115.14069207517447,
+      "left_knee": 78.52360628814988,
+      "right_knee": 141.85732761929296
+    }
+  },
+  {
+    "Utkatasana": {
+      "left_shoulder": 154.0303723697558,
+      "right_shoulder": 160.52452268039337,
+      "left_elbow": 132.34054540766883,
+      "right_elbow": 124.52222393205689,
+      "left_hip": 91.73115393757136,
+      "right_hip": 96.28402291609062,
+      "left_knee": 101.23960292933194,
+      "right_knee": 103.78420380206194
+    }
+  },
+  {
+    "Malasana": {
+      "left_shoulder": 14.010059406452891,
+      "right_shoulder": 66.50426587078398,
+      "left_elbow": 154.18496650817625,
+      "right_elbow": 96.98481733384286,
+      "left_hip": 75.13459854636002,
+      "right_hip": 19.066554888945475,
+      "left_knee": 61.056815913078985,
+      "right_knee": 23.670049136538136
+    }
+  },
+  {
+    "Anjaneyasana": {
+      "left_shoulder": 34.630831730000324,
+      "right_shoulder": 52.726059042058,
+      "left_elbow": 144.63842711718442,
+      "right_elbow": 148.79427433723305,
+      "left_hip": 144.66820145446172,
+      "right_hip": 71.61953339831875,
+      "left_knee": 134.6606455193024,
+      "right_knee": 94.22747870635793
+    }
+  },
+  {
+    "Eka Pada Rajakapotasana": {
+      "left_shoulder": 151.77271529059914,
+      "right_shoulder": 138.1227175767335,
+      "left_elbow": 72.51360177964851,
+      "right_elbow": 99.18883549217806,
+      "left_hip": 99.05065136186218,
+      "right_hip": 125.0565178626363,
+      "left_knee": 72.11487824843314,
+      "right_knee": 24.71446260978726
+    }
+  },
+  {
+    "Vasisthasana": {
+      "left_shoulder": 101.01109918373528,
+      "right_shoulder": 120.43750310476189,
+      "left_elbow": 150.4550655163385,
+      "right_elbow": 139.76526315451366,
+      "left_hip": 150.21152426241892,
+      "right_hip": 161.98471629625953,
+      "left_knee": 132.88025840479472,
+      "right_knee": 130.30438731149673
+    }
+  },
+  {
+    "Utthita Parsvakonasana": {
+      "left_shoulder": 84.69266664830447,
+      "right_shoulder": 141.8463770673268,
+      "left_elbow": 149.93190605683932,
+      "right_elbow": 153.6232017941369,
+      "left_hip": 62.58854937109278,
+      "right_hip": 148.60317686000238,
+      "left_knee": 110.55589424716524,
+      "right_knee": 138.95476756248513
+    }
+  }
+]
+}

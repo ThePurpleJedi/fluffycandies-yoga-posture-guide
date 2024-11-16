@@ -11,6 +11,7 @@
 
     <ImageView
         android:id="@+id/entry_logo"
+        android:contentDescription="Meditating figure, app logo"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/logo_yoga" />

@@ -21,6 +21,7 @@ import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 import android.util.Log;
 import android.util.Size;
+import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.ImageView;
@@ -49,6 +50,13 @@ import com.fluffycandies.yogaguide.java.posedetector.PoseDetectorProcessor;
 import com.fluffycandies.yogaguide.preference.PreferenceUtils;
 import com.fluffycandies.yogaguide.preference.SettingsActivity;
 import com.google.mlkit.vision.pose.PoseDetectorOptionsBase;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
+import java.io.InputStream;
 
 /** Live preview demo app for ML Kit APIs using CameraX. */
 @KeepName
@@ -96,7 +104,6 @@ public final class CameraXLivePreviewActivity extends AppCompatActivity
                 Log.d(TAG, "POSE NOT SELECTED!!!");
                 this.finish();
             }
-
         }
 
         ToggleButton facingSwitch = findViewById(R.id.facing_switch);
@@ -125,7 +132,7 @@ public final class CameraXLivePreviewActivity extends AppCompatActivity
                     startActivity(intent);
                 });
 
-        Button backButton = findViewById(R.id.back_button);
+        View backButton = findViewById(R.id.back_button);
         backButton.setOnClickListener(v ->  {
             this.finish();
         });
@@ -247,7 +254,7 @@ public final class CameraXLivePreviewActivity extends AppCompatActivity
                             rescaleZ,
                             runClassification,
                             /* isStreamMode = */ true,
-                            selectedPose);
+                            getAngleJSONObjectForSelectedPose());
         } catch (Exception e) {
             Log.e(TAG, "Can not create image processor: " + POSE_DETECTION, e);
             Toast.makeText(
@@ -293,5 +300,38 @@ public final class CameraXLivePreviewActivity extends AppCompatActivity
                 });
 
         cameraProvider.bindToLifecycle(/* lifecycleOwner= */ this, cameraSelector, analysisUseCase);
+    }
+
+    JSONObject getAngleJSONObjectForSelectedPose() {
+        try {
+            String jsonString = loadJSONFromAsset("pose/angles.json");
+            JSONObject jsonObject = new JSONObject(jsonString);
+            JSONArray posesArray = jsonObject.getJSONArray("Angles");
+
+            for (int i = 0; i < posesArray.length(); i++) {
+                JSONObject poseObject = posesArray.getJSONObject(i);
+                Log.d(TAG, "pose = " + poseObject.keys().next());
+                if (selectedPose.equals(poseObject.keys().next()))
+                    return poseObject;
+            }
+        } catch (JSONException e) { throw new RuntimeException(e); }
+
+        Log.d(TAG, "selected pose is NULL");
+        return null;
+    }
+    private String loadJSONFromAsset(String file) {
+        String json = null;
+        try {
+            InputStream is = getAssets().open(file);
+            int size = is.available();
+            byte[] buffer = new byte[size];
+            is.read(buffer);
+            is.close();
+            json = new String(buffer, "UTF-8");
+        } catch (IOException ex) {
+            ex.printStackTrace();
+            // fall through
+        }
+        return json;
     }
 }

@@ -24,6 +24,10 @@ import android.util.Log;
 import androidx.annotation.WorkerThread;
 import com.google.common.base.Preconditions;
 import com.google.mlkit.vision.pose.Pose;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -98,13 +102,10 @@ public class PoseClassifierProcessor {
     private List<CountdownTimer> countdownTimers;
     private PoseClassifier poseClassifier;
     private String lastCountResult;
-    private String selectedPose;
-
     @WorkerThread
-    public PoseClassifierProcessor(Context context, boolean isStreamMode, String selectedPose) {
+    public PoseClassifierProcessor(Context context, boolean isStreamMode) {
         Preconditions.checkState(Looper.myLooper() != Looper.getMainLooper());
         this.isStreamMode = isStreamMode;
-        this.selectedPose = selectedPose;
         if (isStreamMode) {
             emaSmoothing = new EMASmoothing();
             countdownTimers = new ArrayList<>();
@@ -147,7 +148,7 @@ public class PoseClassifierProcessor {
      * 1: PoseClass : [0.0-1.0] confidence
      */
     @WorkerThread
-    public List<String> getPoseResult(Pose pose) {
+    public List<String> getPoseResult(Pose pose, JSONObject selectedPose) {
         Preconditions.checkState(Looper.myLooper() != Looper.getMainLooper());
         List<String> result = new ArrayList<>();
         ClassificationResult classification = poseClassifier.classify(pose);
@@ -163,13 +164,15 @@ public class PoseClassifierProcessor {
             }
 
             for (CountdownTimer countdownTimer : countdownTimers) {
-                if (!countdownTimer.getClassName().equals(selectedPose))
+                String poseName = "";
+
+                try {
+                    poseName = selectedPose.getString("sanskrit_name");
+                } catch (JSONException e) { e.printStackTrace(); }
+
+                if (!countdownTimer.getClassName().equals(poseName))
                     continue;
 
-                Log.d(TAG, countdownTimer.getClassName());
-                Log.d(TAG, selectedPose);
-                if (!countdownTimer.getClassName().equals(selectedPose))
-                    continue;
                 int timeBefore = countdownTimer.getTimeCount();
                 int timeAfter = countdownTimer.addClassificationResult(classification);
                 if (timeAfter > timeBefore) {
