@@ -34,7 +34,7 @@ class EntryChoiceActivity : AppCompatActivity(), ActivityCompat.OnRequestPermiss
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        setContentView(R.layout.activity_vision_entry_choice)
+        setContentView(R.layout.activity_entry)
 
         findViewById<TextView>(R.id.java_entry_point).setOnClickListener {
             val intent = Intent(this@EntryChoiceActivity, PoseSelectionActivity::class.java)
@@ -49,7 +49,7 @@ class EntryChoiceActivity : AppCompatActivity(), ActivityCompat.OnRequestPermiss
     override fun onResume() {
         super.onResume()
 
-        setContentView(R.layout.activity_vision_entry_choice)
+        setContentView(R.layout.activity_entry)
 
         findViewById<TextView>(R.id.java_entry_point).setOnClickListener {
             val intent = Intent(this@EntryChoiceActivity, PoseSelectionActivity::class.java)

@@ -9,8 +9,14 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:orientation="vertical">
 
+    <ImageView
+        android:id="@+id/entry_logo"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/logo_yoga" />
+
     <TextView
-        android:background="@drawable/list_item_background"
+        android:background="@drawable/border"
         android:id="@+id/java_entry_point"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
