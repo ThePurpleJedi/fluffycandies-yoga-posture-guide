@@ -2,7 +2,7 @@
 <manifest
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.google.mlkit.vision.demo"
+    package="com.fluffycandies.yogaguide"
     android:installLocation="auto">
     <!-- CameraX libraries require minSdkVersion 21, while this quickstart app
     supports low to 19. Needs to use overrideLibrary to make the merger tool
@@ -36,7 +36,7 @@
           your app is installed.-->
         <meta-data
             android:name="com.google.mlkit.vision.DEPENDENCIES"
-            android:value="barcode,face,ocr,ocr_chinese,ocr_devanagari,ocr_japanese,ocr_korean,ica,custom_ica,subject_segment"/>
+            android:value=""/>
 
         <activity
             android:name=".EntryChoiceActivity"
@@ -49,12 +49,12 @@
         </activity>
 
         <activity
-            android:name=".java.ChooserActivity"
+            android:name=".java.PoseSelectionActivity"
             android:exported="false">
         </activity>
 
         <activity
-            android:name=".java.PoseSelectionActivity"
+            android:name=".java.PoseDetailsActivity"
             android:exported="false">
         </activity>
 
