@@ -166,9 +166,8 @@ public class PoseClassifierProcessor {
             for (CountdownTimer countdownTimer : countdownTimers) {
                 String poseName = "";
 
-                try {
-                    poseName = selectedPose.getString("sanskrit_name");
-                } catch (JSONException e) { e.printStackTrace(); }
+
+                poseName = selectedPose.keys().next();
 
                 if (!countdownTimer.getClassName().equals(poseName))
                     continue;

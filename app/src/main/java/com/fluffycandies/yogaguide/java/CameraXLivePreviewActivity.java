@@ -240,8 +240,6 @@ public final class CameraXLivePreviewActivity extends AppCompatActivity
         try {
             PoseDetectorOptionsBase poseDetectorOptions =
                     PreferenceUtils.getPoseDetectorOptionsForLivePreview(this);
-            boolean shouldShowInFrameLikelihood =
-                    PreferenceUtils.shouldShowPoseDetectionInFrameLikelihoodLivePreview(this);
             boolean visualizeZ = PreferenceUtils.shouldPoseDetectionVisualizeZ(this);
             boolean rescaleZ = PreferenceUtils.shouldPoseDetectionRescaleZForVisualization(this);
             boolean runClassification = PreferenceUtils.shouldPoseDetectionRunClassification(this);
@@ -249,7 +247,6 @@ public final class CameraXLivePreviewActivity extends AppCompatActivity
                     new PoseDetectorProcessor(
                             this,
                             poseDetectorOptions,
-                            shouldShowInFrameLikelihood,
                             visualizeZ,
                             rescaleZ,
                             runClassification,

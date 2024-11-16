@@ -16,6 +16,7 @@
 
 package com.fluffycandies.yogaguide.java.posedetector;
 
+import static java.lang.Math.abs;
 import static java.lang.Math.max;
 import static java.lang.Math.min;
 
@@ -34,6 +35,7 @@ import com.fluffycandies.yogaguide.GraphicOverlay.Graphic;
 import com.google.mlkit.vision.pose.Pose;
 import com.google.mlkit.vision.pose.PoseLandmark;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.List;
@@ -43,12 +45,11 @@ import java.util.Locale;
 public class PoseGraphic extends Graphic {
 
     private static final float DOT_RADIUS = 8.0f;
-    private static final float IN_FRAME_LIKELIHOOD_TEXT_SIZE = 30.0f;
     private static final float STROKE_WIDTH = 10.0f;
     private static final float POSE_CLASSIFICATION_TEXT_SIZE = 60.0f;
+    private static final float ANGLE_THRESHOLD = 25.0f;
 
     private final Pose pose;
-    private final boolean showInFrameLikelihood;
     private final boolean visualizeZ;
     private final boolean rescaleZForVisualization;
     private float zMin = Float.MAX_VALUE;
@@ -59,45 +60,18 @@ public class PoseGraphic extends Graphic {
     private final Paint leftPaint;
     private final Paint rightPaint;
     private final Paint whitePaint;
-    private float[][] angles = new float[4][2];
+    private final Paint redPaint;
+    private final Paint bluePaint;
     private JSONObject poseAnglesObject;
-    private class Vector{
-        private float x , y , z;
-        public Vector(float x, float y, float z) {
-            this.x = x;
-            this.y = y;
-            this.z = z;
-        }
-
-        public float dotProduct(Vector v) {
-            return this.x * v.x + this.y * v.y + this.z * v.z;
-        }
-
-        public float magnitude() {
-            return (float)Math.sqrt(this.x * this.x + this.y * this.y + this.z * this.z);
-        }
-
-        public float angle(Vector v){
-            float mag1 = this.magnitude();
-            float mag2 = v.magnitude();
-            float dot = this.dotProduct(v);
-            if(mag1 == 0f || mag2 == 0f)
-                return -1f;
-            float rad = (float)Math.acos(dot/(mag1 * mag2));
-            return (float)(Math.toDegrees(rad));
-        }
-    }
     PoseGraphic(
             GraphicOverlay overlay,
             Pose pose,
-            boolean showInFrameLikelihood,
             boolean visualizeZ,
             boolean rescaleZForVisualization,
             List<String> poseClassification,
             JSONObject selectedPoseAngles) {
         super(overlay);
         this.pose = pose;
-        this.showInFrameLikelihood = showInFrameLikelihood;
         this.visualizeZ = visualizeZ;
         this.rescaleZForVisualization = rescaleZForVisualization;
         this.poseAnglesObject = selectedPoseAngles;
@@ -111,19 +85,19 @@ public class PoseGraphic extends Graphic {
         whitePaint = new Paint();
         whitePaint.setStrokeWidth(STROKE_WIDTH);
         whitePaint.setColor(Color.WHITE);
-        whitePaint.setTextSize(IN_FRAME_LIKELIHOOD_TEXT_SIZE);
         leftPaint = new Paint();
         leftPaint.setStrokeWidth(STROKE_WIDTH);
         leftPaint.setColor(Color.GREEN);
         rightPaint = new Paint();
         rightPaint.setStrokeWidth(STROKE_WIDTH);
         rightPaint.setColor(Color.YELLOW);
-    }
-    public void init(Vector V , PoseLandmark Point , PoseLandmark Vertex){
-        V.x = Point.getPosition3D().getX() - Vertex.getPosition3D().getX();
-        V.y = Point.getPosition3D().getY() - Vertex.getPosition3D().getY();
-        V.z = Point.getPosition3D().getZ() - Vertex.getPosition3D().getZ();
-        return ;
+
+        redPaint = new Paint();
+        redPaint.setStrokeWidth(STROKE_WIDTH);
+        redPaint.setColor(Color.RED);
+        bluePaint = new Paint();
+        bluePaint.setStrokeWidth(STROKE_WIDTH);
+        bluePaint.setColor(Color.BLUE);
     }
     @Override
     public void draw(Canvas canvas) {
@@ -144,6 +118,10 @@ public class PoseGraphic extends Graphic {
         }
 
         for (PoseLandmark landmark : landmarks) {
+            int type = landmark.getLandmarkType();
+            if ((type >= 17 && type <= 22) || (type >= 29 && type <= 32))
+                continue;
+
             drawPoint(canvas, landmark, whitePaint);
             if (visualizeZ && rescaleZForVisualization) {
                 zMin = min(zMin, landmark.getPosition3D().getZ());
@@ -164,66 +142,33 @@ public class PoseGraphic extends Graphic {
         PoseLandmark leftAnkle = pose.getPoseLandmark(PoseLandmark.LEFT_ANKLE);
         PoseLandmark rightAnkle = pose.getPoseLandmark(PoseLandmark.RIGHT_ANKLE);
 
-        PoseLandmark leftPinky = pose.getPoseLandmark(PoseLandmark.LEFT_PINKY);
-        PoseLandmark rightPinky = pose.getPoseLandmark(PoseLandmark.RIGHT_PINKY);
-        PoseLandmark leftIndex = pose.getPoseLandmark(PoseLandmark.LEFT_INDEX);
-        PoseLandmark rightIndex = pose.getPoseLandmark(PoseLandmark.RIGHT_INDEX);
-        PoseLandmark leftThumb = pose.getPoseLandmark(PoseLandmark.LEFT_THUMB);
-        PoseLandmark rightThumb = pose.getPoseLandmark(PoseLandmark.RIGHT_THUMB);
-        PoseLandmark leftHeel = pose.getPoseLandmark(PoseLandmark.LEFT_HEEL);
-        PoseLandmark rightHeel = pose.getPoseLandmark(PoseLandmark.RIGHT_HEEL);
-        PoseLandmark leftFootIndex = pose.getPoseLandmark(PoseLandmark.LEFT_FOOT_INDEX);
-        PoseLandmark rightFootIndex = pose.getPoseLandmark(PoseLandmark.RIGHT_FOOT_INDEX);
+        try {
+            JSONObject angleJSON = poseAnglesObject.getJSONObject(poseAnglesObject.keys().next());
+            PoseAngles idealAngles = new PoseAngles(angleJSON);
 
-        Vector leftElbowJoint1 = new Vector(0f , 0f , 0f);
-        Vector leftElbowJoint2 = new Vector(0f , 0f , 0f);
-        Vector leftShoulderJoint1 =  new Vector(0f , 0f , 0f);
-        Vector leftShoulderJoint2 =  new Vector(0f , 0f , 0f);
-        Vector leftHipJoint1 =  new Vector(0f , 0f , 0f);
-        Vector leftHipJoint2 =  new Vector(0f , 0f , 0f);
-        Vector leftKneeJoint1 =  new Vector(0f , 0f , 0f);
-        Vector leftKneeJoint2 =  new Vector(0f , 0f , 0f);
+            PoseAngles measuredAngles = new PoseAngles(
+                    getJointAngle(leftElbow, leftShoulder, leftHip),
+                    getJointAngle(rightElbow, rightShoulder, rightHip),
+                    getJointAngle(leftShoulder , leftElbow, leftWrist),
+                    getJointAngle(rightShoulder, rightElbow, rightWrist),
+                    getJointAngle(leftShoulder, leftHip, leftKnee),
+                    getJointAngle(rightShoulder, rightHip, rightKnee),
+                    getJointAngle(leftHip, leftKnee, leftAnkle),
+                    getJointAngle(rightHip, rightKnee, leftAnkle)
+            );
 
-        Vector rightElbowJoint1 = new Vector(0f , 0f , 0f);
-        Vector rightElbowJoint2 = new Vector(0f , 0f , 0f);
-        Vector rightShoulderJoint1 =  new Vector(0f , 0f , 0f);
-        Vector rightShoulderJoint2 =  new Vector(0f , 0f , 0f);
-        Vector rightHipJoint1 =  new Vector(0f , 0f , 0f);
-        Vector rightHipJoint2 =  new Vector(0f , 0f , 0f);
-        Vector rightKneeJoint1 =  new Vector(0f , 0f , 0f);
-        Vector rightKneeJoint2 =  new Vector(0f , 0f , 0f);
+            float[] comparison = idealAngles.compareTo(measuredAngles);
+            PoseLandmark[] joints = {leftShoulder, rightShoulder, leftElbow, rightElbow, leftHip, rightHip, leftAnkle, rightAnkle};
 
-        init(leftElbowJoint1 , leftShoulder , leftElbow);
-        init(leftElbowJoint2 , leftWrist , leftElbow);
-        init(leftShoulderJoint1 , leftElbow , leftShoulder);
-        init(leftShoulderJoint2 , leftHip , leftShoulder);
-        init(leftHipJoint1 , leftShoulder , leftHip);
-        init(leftHipJoint2 , leftKnee , leftHip);
-        init(leftKneeJoint1 , leftHip , leftKnee);
-        init(leftKneeJoint2 , leftHeel , leftKnee);
-
-        init(rightElbowJoint1 , leftShoulder , leftElbow);
-        init(rightElbowJoint2 , leftWrist , leftElbow);
-        init(rightShoulderJoint1 , leftElbow , leftShoulder);
-        init(rightShoulderJoint2 , leftHip , leftShoulder);
-        init(rightHipJoint1 , leftShoulder , leftHip);
-        init(rightHipJoint2 , leftKnee , leftHip);
-        init(rightKneeJoint1 , leftHip , leftKnee);
-        init(rightKneeJoint2 , leftHeel , leftKnee);
-
-        angles[0][0] = leftElbowJoint1.angle(leftElbowJoint2);
-        angles[0][1] = rightElbowJoint1.angle(rightElbowJoint2);
-
-        angles[1][0] = leftShoulderJoint1.angle(leftShoulderJoint2);
-        angles[1][1] = rightShoulderJoint1.angle(rightShoulderJoint2);
-
-        angles[2][0] = leftHipJoint1.angle(leftHipJoint2);
-        angles[2][1] = rightHipJoint1.angle(rightHipJoint2);
-
-        angles[3][0] = leftKneeJoint1.angle(leftKneeJoint2);
-        angles[3][1] = rightKneeJoint1.angle(rightKneeJoint2);
-
-        Log.d("PoseGraphic", "selected pose = " + poseAnglesObject.keys().next());
+            for (int i = 0; i < 8; i ++) {
+                if (abs(comparison[i]) > ANGLE_THRESHOLD) {
+                    Log.d("PoseGraphic", "Joint " + i + " is out of sync by " + abs(comparison[i]) + " degrees");
+                    drawCircle(canvas, joints[i], redPaint);
+                } else {
+                    drawPoint(canvas, joints[i], bluePaint);
+                }
+            }
+        } catch (JSONException e) { e.printStackTrace(); }
 
         drawLine(canvas, leftShoulder, rightShoulder, whitePaint);
         drawLine(canvas, leftHip, rightHip, whitePaint);
@@ -234,12 +179,6 @@ public class PoseGraphic extends Graphic {
         drawLine(canvas, leftShoulder, leftHip, leftPaint);
         drawLine(canvas, leftHip, leftKnee, leftPaint);
         drawLine(canvas, leftKnee, leftAnkle, leftPaint);
-        drawLine(canvas, leftWrist, leftThumb, leftPaint);
-        drawLine(canvas, leftWrist, leftPinky, leftPaint);
-        drawLine(canvas, leftWrist, leftIndex, leftPaint);
-        drawLine(canvas, leftIndex, leftPinky, leftPaint);
-        drawLine(canvas, leftAnkle, leftHeel, leftPaint);
-        drawLine(canvas, leftHeel, leftFootIndex, leftPaint);
 
         // Right body
         drawLine(canvas, rightShoulder, rightElbow, rightPaint);
@@ -247,23 +186,12 @@ public class PoseGraphic extends Graphic {
         drawLine(canvas, rightShoulder, rightHip, rightPaint);
         drawLine(canvas, rightHip, rightKnee, rightPaint);
         drawLine(canvas, rightKnee, rightAnkle, rightPaint);
-        drawLine(canvas, rightWrist, rightThumb, rightPaint);
-        drawLine(canvas, rightWrist, rightPinky, rightPaint);
-        drawLine(canvas, rightWrist, rightIndex, rightPaint);
-        drawLine(canvas, rightIndex, rightPinky, rightPaint);
-        drawLine(canvas, rightAnkle, rightHeel, rightPaint);
-        drawLine(canvas, rightHeel, rightFootIndex, rightPaint);
+    }
 
-        // Draw inFrameLikelihood for all points
-        if (showInFrameLikelihood) {
-            for (PoseLandmark landmark : landmarks) {
-                canvas.drawText(
-                        String.format(Locale.US, "%.2f", landmark.getInFrameLikelihood()),
-                        translateX(landmark.getPosition().x),
-                        translateY(landmark.getPosition().y),
-                        whitePaint);
-            }
-        }
+    private float getJointAngle(PoseLandmark l1, PoseLandmark l2, PoseLandmark l3) {
+        Vector vec1 = new Vector(l1, l2);
+        Vector vec2 = new Vector(l3, l2);
+        return vec1.angle(vec2);
     }
 
     void drawPoint(Canvas canvas, PoseLandmark landmark, Paint paint) {
@@ -275,12 +203,13 @@ public class PoseGraphic extends Graphic {
 
     void drawCircle(Canvas canvas, PoseLandmark landmark, Paint paint) {
         if (landmark != null) {
-            float x = landmark.getPosition().x;
-            float y = landmark.getPosition().y;
+            PointF3D point = landmark.getPosition3D();
+            float x = point.getX();
+            float y = point.getY();
 
-            float radius = 2f;
+            float radius = 24.0f;
 
-            canvas.drawCircle(x, y, radius, paint);
+            canvas.drawCircle(translateX(x), translateY(y), radius, paint);
         }
     }
 
@@ -300,5 +229,89 @@ public class PoseGraphic extends Graphic {
                 translateX(end.getX()),
                 translateY(end.getY()),
                 paint);
+    }
+
+    public class PoseAngles {
+        public double left_shoulder;
+        public double right_shoulder;
+        public double left_elbow;
+        public double right_elbow;
+        public double left_hip;
+        public double right_hip;
+        public double left_knee;
+        public double right_knee;
+
+        public PoseAngles(double left_shoulder, double right_shoulder, double left_elbow, double right_elbow,
+                          double left_hip, double right_hip, double left_knee, double right_knee) {
+            this.left_shoulder = left_shoulder;
+            this.right_shoulder = right_shoulder;
+            this.left_elbow = left_elbow;
+            this.right_elbow = right_elbow;
+            this.left_hip = left_hip;
+            this.right_hip = right_hip;
+            this.left_knee = left_knee;
+            this.right_knee = right_knee;
+        }
+
+        // Constructor for initializing the values
+        public PoseAngles(JSONObject angles) {
+
+            try {
+                this.left_shoulder = Double.parseDouble(angles.getString("left_shoulder"));
+                this.right_shoulder = Double.parseDouble(angles.getString("right_shoulder"));
+                this.left_elbow = Double.parseDouble(angles.getString("left_elbow"));
+                this.right_elbow = Double.parseDouble(angles.getString("right_elbow"));
+                this.left_hip = Double.parseDouble(angles.getString("left_hip"));
+                this.right_hip = Double.parseDouble(angles.getString("right_hip"));
+                this.left_knee = Double.parseDouble(angles.getString("left_knee"));
+                this.right_knee = Double.parseDouble(angles.getString("right_knee"));
+            } catch (JSONException e) { e.printStackTrace(); }
+        }
+
+        float[] compareTo(PoseAngles measuredPose) {
+            float[] comparison = new float[8];
+
+            comparison[0] = (float) (this.left_shoulder - measuredPose.left_shoulder);
+            comparison[1] = (float) (this.right_shoulder - measuredPose.right_shoulder);
+            comparison[2] = (float) (this.left_elbow - measuredPose.left_elbow);
+            comparison[3] = (float) (this.right_elbow - measuredPose.right_elbow);
+            comparison[4] = (float) (this.left_hip - measuredPose.left_hip);
+            comparison[5] = (float) (this.right_hip - measuredPose.right_hip);
+            comparison[6] = (float) (this.left_knee - measuredPose.left_knee);
+            comparison[7] = (float) (this.right_knee - measuredPose.right_knee);
+
+            return comparison;
+        }
+    }
+
+    private class Vector{
+        private float x , y , z;
+        public Vector(float x, float y, float z) {
+            this.x = x;
+            this.y = y;
+            this.z = z;
+        }
+        public Vector(PoseLandmark Point , PoseLandmark Vertex){
+            this.x = Point.getPosition3D().getX() - Vertex.getPosition3D().getX();
+            this.y = Point.getPosition3D().getY() - Vertex.getPosition3D().getY();
+            this.z = Point.getPosition3D().getZ() - Vertex.getPosition3D().getZ();
+        }
+        public float dotProduct(Vector v) {
+            return this.x * v.x + this.y * v.y + this.z * v.z;
+        }
+
+        public float magnitude() {
+            return (float)Math.sqrt(this.x * this.x + this.y * this.y + this.z * this.z);
+        }
+
+        public float angle(Vector v){
+            float mag1 = this.magnitude();
+            float mag2 = v.magnitude();
+            float dot = this.dotProduct(v);
+            if(mag1 == 0f || mag2 == 0f)
+                return -1f;
+            float rad = (float)Math.acos(dot/(mag1 * mag2));
+            return (float)(Math.toDegrees(rad));
+        }
     }
 }
