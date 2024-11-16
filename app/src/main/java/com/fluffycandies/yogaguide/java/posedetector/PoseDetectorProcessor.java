@@ -44,7 +44,6 @@ public class PoseDetectorProcessor
 
   private final PoseDetector detector;
 
-  private final boolean showInFrameLikelihood;
   private final boolean visualizeZ;
   private final boolean rescaleZForVisualization;
   private final boolean runClassification;
@@ -76,7 +75,6 @@ public class PoseDetectorProcessor
   public PoseDetectorProcessor(
       Context context,
       PoseDetectorOptionsBase options,
-      boolean showInFrameLikelihood,
       boolean visualizeZ,
       boolean rescaleZForVisualization,
       boolean runClassification,
@@ -84,7 +82,6 @@ public class PoseDetectorProcessor
       JSONObject selectedPose
       ) {
     super(context);
-    this.showInFrameLikelihood = showInFrameLikelihood;
     this.visualizeZ = visualizeZ;
     this.rescaleZForVisualization = rescaleZForVisualization;
     detector = PoseDetection.getClient(options);
@@ -147,7 +144,6 @@ public class PoseDetectorProcessor
         new PoseGraphic(
             graphicOverlay,
             poseWithClassification.pose,
-            showInFrameLikelihood,
             visualizeZ,
             rescaleZForVisualization,
             poseWithClassification.classificationResult, selectedPose));
