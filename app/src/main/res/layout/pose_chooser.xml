@@ -8,6 +8,23 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:orientation="vertical">
+  <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content">
+    <SearchView
+        android:id="@+id/search_view"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:queryHint="Search poses" />
+
+    <ImageButton
+        android:id="@+id/voice_search_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@android:drawable/ic_btn_speak_now"
+        android:contentDescription="Voice Search" />
+  </LinearLayout>
 
   <ImageView
       android:id="@+id/imageView"
