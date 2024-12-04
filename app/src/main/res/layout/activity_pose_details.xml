@@ -38,6 +38,23 @@
       android:contentDescription="Image of Yoga Pose"
       android:scaleType="fitCenter" />
 
+  <TextView
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="Enter your target time in seconds"
+      android:textSize="16sp"
+      android:paddingBottom="8dp"/>
+
+  <EditText
+      android:id="@+id/targetTimeInput"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:inputType="number"
+      android:hint="30"
+      android:text="30"
+      android:importantForAccessibility="yes"
+      android:contentDescription="Target time input field"/>
+
   <Button
       android:id="@+id/continue_button"
       android:layout_width="match_parent"

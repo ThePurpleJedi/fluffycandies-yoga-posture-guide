@@ -284,13 +284,10 @@ public class PoseGraphic extends Graphic {
         }
     }
 
-    private class Vector{
-        private float x , y , z;
-        public Vector(float x, float y, float z) {
-            this.x = x;
-            this.y = y;
-            this.z = z;
-        }
+    private static class Vector{
+        private final float x;
+        private final float y;
+        private final float z;
         public Vector(PoseLandmark Point , PoseLandmark Vertex){
             this.x = Point.getPosition3D().getX() - Vertex.getPosition3D().getX();
             this.y = Point.getPosition3D().getY() - Vertex.getPosition3D().getY();

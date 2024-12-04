@@ -10,6 +10,7 @@ import com.caverock.androidsvg.SVG;
 
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -27,7 +28,10 @@ import com.fluffycandies.yogaguide.R;
 public final class PoseDetailsActivity extends AppCompatActivity implements View.OnClickListener {
 
     private static final String STATE_SELECTED_POSE = "selected_pose";
+    private static final String STATE_TARGET_TIME = "target_time";
     private static String selectedPose;
+    private static int targetTime;
+    private static final int DEFAULT_TIME_IN_SECONDS = 30;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,7 +46,11 @@ public final class PoseDetailsActivity extends AppCompatActivity implements View
             this.finish();
         });
 
-        // Locate the views
+        EditText targetTimeInput = findViewById(R.id.targetTimeInput);
+
+        String targetTimeString = targetTimeInput.getText().toString();
+        targetTime = (targetTimeString.isEmpty()) ? DEFAULT_TIME_IN_SECONDS : Integer.parseInt(targetTimeString);
+
         TextView englishNameTextView = findViewById(R.id.tvEnglishName);
         TextView sanskritNameTextView = findViewById(R.id.tvSanskritName);
         ImageView poseImageView = findViewById(R.id.ivPoseImage);
@@ -106,10 +114,8 @@ public final class PoseDetailsActivity extends AppCompatActivity implements View
             imageView.setImageDrawable(drawable);
             // the following does not work
 //      imageView.setColorFilter(getResources().getColor(android.R.color.black), PorterDuff.Mode.SRC_IN);
-        } catch (IOException e) {
+        } catch (IOException | SVGParseException e) {
             e.printStackTrace();
-        } catch (SVGParseException s){
-            s.printStackTrace();
         }
     }
 
@@ -117,6 +123,7 @@ public final class PoseDetailsActivity extends AppCompatActivity implements View
     public void onClick(View v) {
         Intent intent = new Intent(this, CameraXLivePreviewActivity.class);
         intent.putExtra(STATE_SELECTED_POSE, selectedPose);
+        intent.putExtra(STATE_TARGET_TIME, targetTime);
         startActivity(intent);
     }
 }

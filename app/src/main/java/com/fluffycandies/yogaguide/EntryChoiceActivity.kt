@@ -36,7 +36,7 @@ class EntryChoiceActivity : AppCompatActivity(), ActivityCompat.OnRequestPermiss
 
         setContentView(R.layout.activity_entry)
 
-        findViewById<TextView>(R.id.java_entry_point).setOnClickListener {
+        findViewById<TextView>(R.id.select_single_pose).setOnClickListener {
             val intent = Intent(this@EntryChoiceActivity, PoseSelectionActivity::class.java)
             startActivity(intent)
         }
@@ -51,7 +51,7 @@ class EntryChoiceActivity : AppCompatActivity(), ActivityCompat.OnRequestPermiss
 
         setContentView(R.layout.activity_entry)
 
-        findViewById<TextView>(R.id.java_entry_point).setOnClickListener {
+        findViewById<TextView>(R.id.select_single_pose).setOnClickListener {
             val intent = Intent(this@EntryChoiceActivity, PoseSelectionActivity::class.java)
             startActivity(intent)
         }

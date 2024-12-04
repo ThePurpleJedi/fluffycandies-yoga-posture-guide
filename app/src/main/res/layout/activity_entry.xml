@@ -11,14 +11,15 @@
 
     <ImageView
         android:id="@+id/entry_logo"
-        android:contentDescription="Meditating figure, app logo"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:contentDescription="@string/meditating_figure_app_logo"
+        android:layout_width="160dp"
+        android:layout_height="160dp"
+        android:layout_gravity="center"
         android:background="@drawable/logo_yoga" />
 
     <TextView
         android:background="@drawable/border"
-        android:id="@+id/java_entry_point"
+        android:id="@+id/select_single_pose"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/activity_vertical_margin"

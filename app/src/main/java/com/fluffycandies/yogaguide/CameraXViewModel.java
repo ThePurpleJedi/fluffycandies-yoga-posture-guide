@@ -30,7 +30,6 @@ import com.google.common.util.concurrent.ListenableFuture;
 import java.util.concurrent.ExecutionException;
 
 /** View model for interacting with CameraX. */
-@RequiresApi(VERSION_CODES.LOLLIPOP)
 public final class CameraXViewModel extends AndroidViewModel {
 
   private static final String TAG = "CameraXViewModel";
