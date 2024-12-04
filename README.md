@@ -20,7 +20,7 @@ To compile from source, clone this repository, build it in Android Studio and ru
 The UI is very intuitive and user-friendly. To use:
 
 - Open the app and click on the start button, and you will be greeted with this screen
-![select.jpeg](demo/select.jpeg)
+<img src="demo/select.jpeg" alt="Selection" width="200" height="500"> 
 
 - Choose the required pose from the list (you can use the search button at the top left or voice search at the top right)
 ![search.jpeg](demos/search.jpeg)
