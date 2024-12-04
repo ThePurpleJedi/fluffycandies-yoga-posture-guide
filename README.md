@@ -20,18 +20,22 @@ To compile from source, clone this repository, build it in Android Studio and ru
 The UI is very intuitive and user-friendly. To use:
 
 - Open the app and click on the start button, and you will be greeted with this screen
-<img src="demo/select.jpeg" alt="Selection" width="200" height="500"> 
 
 - Choose the required pose from the list (you can use the search button at the top left or voice search at the top right)
-![search.jpeg](demos/search.jpeg)
 
 - Click on the continue button on the page that shows up
-![details.jpeg](demos/details.jpeg)
 
 - You can now set up your phone such that you are in the frame, and toggle between using the front and back camera with the button at the bottom right
+
+# Screenshots
+
+![select.jpeg](demo/select.jpeg)
+
+![search.jpeg](demos/search.jpeg)
+
+![details.jpeg](demos/details.jpeg)
+
 ![camera.jpeg](demos/camera.jpeg)
 
 ## Demo
-
-[demo_video.mp4](demos/demo_video.mp4)
 
