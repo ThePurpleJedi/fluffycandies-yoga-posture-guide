@@ -29,13 +29,16 @@ The UI is very intuitive and user-friendly. To use:
 
 # Screenshots
 
-![select.jpeg](demo/select.jpeg)
+![select](https://github.com/user-attachments/assets/9364dc88-7b3a-45a2-9509-a1093c8e0c36)
 
-![search.jpeg](demos/search.jpeg)
+![search](https://github.com/user-attachments/assets/c57e5608-0fa3-4b51-a0c0-4e61c316fe08)
 
-![details.jpeg](demos/details.jpeg)
+![details](https://github.com/user-attachments/assets/35d5ca98-d2f2-4f73-8558-247b935951af)
 
-![camera.jpeg](demos/camera.jpeg)
+![camera](https://github.com/user-attachments/assets/cb9849e5-e871-4775-a44d-b61f81ed4810)
 
 ## Demo
+
+https://github.com/user-attachments/assets/e840ae98-4514-4e2c-8687-394354a24580
+
 
