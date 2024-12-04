@@ -50,6 +50,7 @@ import com.fluffycandies.yogaguide.java.posedetector.PoseDetectorProcessor;
 import com.fluffycandies.yogaguide.preference.PreferenceUtils;
 import com.fluffycandies.yogaguide.preference.SettingsActivity;
 import com.google.mlkit.vision.pose.PoseDetectorOptionsBase;
+import com.fluffycandies.yogaguide.java.posedetector.classification.PoseClassifierProcessor;
 
 import org.json.JSONArray;
 import org.json.JSONException;

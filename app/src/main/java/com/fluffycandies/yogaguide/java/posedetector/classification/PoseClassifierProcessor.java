@@ -95,7 +95,7 @@ public class PoseClassifierProcessor {
             "Urdhva Dhanurasana",
             "Camatkarasana"
     };
-
+    public static int lastCount = 0;
     private final boolean isStreamMode;
 
     private EMASmoothing emaSmoothing;
@@ -166,7 +166,6 @@ public class PoseClassifierProcessor {
             for (CountdownTimer countdownTimer : countdownTimers) {
                 String poseName = "";
 
-
                 poseName = selectedPose.keys().next();
 
                 if (!countdownTimer.getClassName().equals(poseName))
@@ -178,8 +177,10 @@ public class PoseClassifierProcessor {
                     // Play a fun beep when countdown updates.
                     ToneGenerator tg = new ToneGenerator(AudioManager.STREAM_NOTIFICATION, 100);
                     tg.startTone(ToneGenerator.TONE_PROP_BEEP);
+                    lastCount = timeAfter;
                     lastCountResult = String.format(
                             Locale.US, "%s : %d seconds", countdownTimer.getClassName(), timeAfter);
+
                     break;
                 }
             }

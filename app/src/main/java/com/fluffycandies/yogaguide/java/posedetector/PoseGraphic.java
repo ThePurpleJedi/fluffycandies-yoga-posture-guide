@@ -39,7 +39,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.List;
-import java.util.Locale;
 
 /** Draw the detected pose in preview. */
 public class PoseGraphic extends Graphic {
@@ -62,6 +61,7 @@ public class PoseGraphic extends Graphic {
     private final Paint whitePaint;
     private final Paint redPaint;
     private final Paint bluePaint;
+    private String lastPoseTime;
     private JSONObject poseAnglesObject;
     PoseGraphic(
             GraphicOverlay overlay,
@@ -143,7 +143,8 @@ public class PoseGraphic extends Graphic {
         PoseLandmark rightAnkle = pose.getPoseLandmark(PoseLandmark.RIGHT_ANKLE);
 
         try {
-            JSONObject angleJSON = poseAnglesObject.getJSONObject(poseAnglesObject.keys().next());
+            String name = poseAnglesObject.keys().next();
+            JSONObject angleJSON = poseAnglesObject.getJSONObject(name);
             PoseAngles idealAngles = new PoseAngles(angleJSON);
 
             PoseAngles measuredAngles = new PoseAngles(
@@ -160,8 +161,11 @@ public class PoseGraphic extends Graphic {
             float[] comparison = idealAngles.compareTo(measuredAngles);
             PoseLandmark[] joints = {leftShoulder, rightShoulder, leftElbow, rightElbow, leftHip, rightHip, leftAnkle, rightAnkle};
 
+            String lastPoseDetected = poseClassification.get(0).split(" : ")[0];
+            String currentPose = poseClassification.get(1).split(" : ")[0];
+
             for (int i = 0; i < 8; i ++) {
-                if (abs(comparison[i]) > ANGLE_THRESHOLD) {
+                if (abs(comparison[i]) > ANGLE_THRESHOLD && lastPoseDetected.equals(currentPose)) {
                     Log.d("PoseGraphic", "Joint " + i + " is out of sync by " + abs(comparison[i]) + " degrees");
                     drawCircle(canvas, joints[i], redPaint);
                 } else {
