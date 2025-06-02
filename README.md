@@ -35,7 +35,8 @@ The UI is very intuitive and user-friendly. To use:
 
 ![details](https://github.com/user-attachments/assets/35d5ca98-d2f2-4f73-8558-247b935951af)
 
-![camera](https://github.com/user-attachments/assets/cb9849e5-e871-4775-a44d-b61f81ed4810)
+![camera](https://github.com/user-attachments/assets/677a8d0c-8fdd-4e66-a952-0e7f19a915e8)
+
 
 ## Demo
 
